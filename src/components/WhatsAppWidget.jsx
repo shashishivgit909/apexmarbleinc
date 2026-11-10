@@ -4,7 +4,7 @@ import { websiteData } from '../data/websiteData';
 
 export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const company = websiteData.company;
+  const { company } = websiteData;
 
   return (
     <div className="whatsapp-floating-widget">
@@ -15,13 +15,14 @@ export default function WhatsAppWidget() {
               <span className="online-indicator" />
               <div>
                 <strong>Apex Marble Concierge</strong>
-                <p>Typically replies in minutes</p>
+                <p>San Jose Showroom Specialist</p>
               </div>
             </div>
             <button
               type="button"
               className="popup-close-btn"
               onClick={() => setIsOpen(false)}
+              aria-label="Close Concierge Chat"
             >
               <X size={16} />
             </button>
@@ -29,32 +30,28 @@ export default function WhatsAppWidget() {
 
           <div className="popup-body">
             <p>
-              Hi there! 👋 How can we help you with natural stone slabs, marble, or prefab countertops today?
+              Welcome to Apex Marble! How can we assist you with natural stone slabs, marble,
+              quartzite, or custom countertops today?
             </p>
 
             <div className="popup-actions">
               <a
-                href={`https://wa.me/14082781300?text=${encodeURIComponent('Hello Apex Marble, I would like to inquire about slabs and pricing.')}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#main-site-footer"
+                onClick={() => setIsOpen(false)}
                 className="popup-btn whatsapp-action-btn"
               >
                 <MessageCircle size={16} />
                 <span>Chat on WhatsApp</span>
               </a>
 
-              <a
-                href={`tel:${company.phonePlain}`}
-                className="popup-btn phone-action-btn"
-              >
+              <a href={`tel:${company.phonePlain}`} className="popup-btn phone-action-btn">
                 <Phone size={16} />
-                <span>Call (408) 278-1300</span>
+                <span>Call {company.phone}</span>
               </a>
 
               <a
                 href={company.quoteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
                 className="popup-btn quote-action-btn"
               >
                 <FileText size={16} />
@@ -65,15 +62,14 @@ export default function WhatsAppWidget() {
         </div>
       )}
 
-      {/* Floating Bubble Button */}
       <button
         type="button"
         className="whats-app-bubble"
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Contact Apex Marble on WhatsApp"
+        aria-label="Contact Apex Marble Concierge"
         title="Chat with Apex Marble"
       >
-        <MessageCircle size={28} color="#ffffff" />
+        <MessageCircle size={26} color="#FAF7F2" />
       </button>
     </div>
   );

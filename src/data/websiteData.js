@@ -8,8 +8,8 @@ export const websiteData = {
     phonePlain: "4082781300",
     email: "info@apexmarbleinc.com",
     address: "1740 Junction Ave Suite C, San Jose, CA 95112",
-    mapsUrl: "https://maps.app.goo.gl/JxD65aphmuoetZN39",
-    quoteUrl: "https://www.apexmarbleinc.com/contact#quote",
+    mapsUrl: "#", // "https://maps.app.goo.gl/JxD65aphmuoetZN39"
+    quoteUrl: "#", // "https://www.apexmarbleinc.com/contact#quote"
     headerLogo: "/images/logo.png",
     footerLogo: "/images/footer-logo.png",
     headerLogoRemote: "https://assets.zyrosite.com/A1az8Ze6q1IGrDxp/apex-marble-large-logo-6mb-1-mnl4V0jzE2FVD9W3.png",
@@ -18,48 +18,49 @@ export const websiteData = {
     trustedPillText: "Trusted by Silicon Valley Homeowners"
   },
 
+  // Pages are kept visible in navigation, with external/other-page routes commented out
   navigation: [
     { id: "home", name: "Home", href: "/" },
     {
       id: "slabs",
       name: "Slabs",
-      href: "https://www.apexmarbleinc.com/slabs",
+      href: "#", // "https://www.apexmarbleinc.com/slabs"
       subItems: [
-        { name: "Quartzite Slabs", href: "https://www.apexmarbleinc.com/quartzite-slabs" },
-        { name: "Granite Slabs", href: "https://www.apexmarbleinc.com/granite-slabs" },
-        { name: "Marble Slabs", href: "https://www.apexmarbleinc.com/marble-slabs" },
-        { name: "Quartz Slabs", href: "https://www.apexmarbleinc.com/quartz-slabs" },
-        { name: "Porcelain Slabs", href: "https://www.apexmarbleinc.com/porcelain-slabs" },
-        { name: "Dekton Slabs", href: "https://www.apexmarbleinc.com/dekton-slabs" },
-        { name: "Specialty Slabs", href: "https://www.apexmarbleinc.com/specialty-slabs" },
-        { name: "Promotional Slabs", href: "https://www.apexmarbleinc.com/promotional-slabs" }
+        { name: "Quartzite Slabs", href: "#" /* "https://www.apexmarbleinc.com/quartzite-slabs" */ },
+        { name: "Granite Slabs", href: "#" /* "https://www.apexmarbleinc.com/granite-slabs" */ },
+        { name: "Marble Slabs", href: "#" /* "https://www.apexmarbleinc.com/marble-slabs" */ },
+        { name: "Quartz Slabs", href: "#" /* "https://www.apexmarbleinc.com/quartz-slabs" */ },
+        { name: "Porcelain Slabs", href: "#" /* "https://www.apexmarbleinc.com/porcelain-slabs" */ },
+        { name: "Dekton Slabs", href: "#" /* "https://www.apexmarbleinc.com/dekton-slabs" */ },
+        { name: "Specialty Slabs", href: "#" /* "https://www.apexmarbleinc.com/specialty-slabs" */ },
+        { name: "Promotional Slabs", href: "#" /* "https://www.apexmarbleinc.com/promotional-slabs" */ }
       ]
     },
     {
       id: "tiles",
       name: "Tiles",
-      href: "https://www.apexmarbleinc.com/tiles",
+      href: "#", // "https://www.apexmarbleinc.com/tiles"
       subItems: [
-        { name: "Tiles", href: "https://www.apexmarbleinc.com/tiles" },
-        { name: "Promotional Tiles", href: "https://www.apexmarbleinc.com/promotional-tiles" }
+        { name: "Tiles", href: "#" /* "https://www.apexmarbleinc.com/tiles" */ },
+        { name: "Promotional Tiles", href: "#" /* "https://www.apexmarbleinc.com/promotional-tiles" */ }
       ]
     },
     {
       id: "countertops",
       name: "Countertops",
-      href: "https://www.apexmarbleinc.com/countertops",
+      href: "#", // "https://www.apexmarbleinc.com/countertops"
       subItems: [
-        { name: "Countertops", href: "https://www.apexmarbleinc.com/countertops" },
-        { name: "Pre Fab", href: "https://www.apexmarbleinc.com/pre-fab" }
+        { name: "Countertops", href: "#" /* "https://www.apexmarbleinc.com/countertops" */ },
+        { name: "Pre Fab", href: "#" /* "https://www.apexmarbleinc.com/pre-fab" */ }
       ]
     },
-    { id: "flooring", name: "Flooring", href: "https://www.apexmarbleinc.com/flooring" },
-    { id: "showerpanels", name: "ShowerPanels", href: "https://www.apexmarbleinc.com/showerpanels" },
-    { id: "gallery", name: "Gallery", href: "https://www.apexmarbleinc.com/gallery" },
-    { id: "store", name: "Store", href: "https://www.apexmarbleinc.com/store" },
-    { id: "about", name: "About", href: "https://www.apexmarbleinc.com/about" },
-    { id: "faq", name: "FAQ", href: "https://www.apexmarbleinc.com/faq" },
-    { id: "contact", name: "Contact", href: "https://www.apexmarbleinc.com/contact" }
+    { id: "flooring", name: "Flooring", href: "#" /* "https://www.apexmarbleinc.com/flooring" */ },
+    { id: "showerpanels", name: "ShowerPanels", href: "#" /* "https://www.apexmarbleinc.com/showerpanels" */ },
+    { id: "gallery", name: "Gallery", href: "#" /* "https://www.apexmarbleinc.com/gallery" */ },
+    { id: "store", name: "Store", href: "#" /* "https://www.apexmarbleinc.com/store" */ },
+    { id: "about", name: "About", href: "#" /* "https://www.apexmarbleinc.com/about" */ },
+    { id: "faq", name: "FAQ", href: "#" /* "https://www.apexmarbleinc.com/faq" */ },
+    { id: "contact", name: "Contact", href: "#" /* "https://www.apexmarbleinc.com/contact" */ }
   ],
 
   // 11 Exact Hero Slides from https://www.apexmarbleinc.com/
@@ -164,7 +165,7 @@ export const websiteData = {
       {
         id: "quartzite",
         title: "Quartzite",
-        href: "https://www.apexmarbleinc.com/quartzite-slabs",
+        href: "#", // "https://www.apexmarbleinc.com/quartzite-slabs"
         image: "/images/material-quartzite.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1qkLeyOh1IJorhZWDE0ugxHdbjHd600wR=w1200",
         description: "Harder than granite with the exotic look of marble. High resistance to scratching, UV fading, and acidic etching.",
@@ -173,7 +174,7 @@ export const websiteData = {
       {
         id: "granite",
         title: "Granite",
-        href: "https://www.apexmarbleinc.com/granite-slabs",
+        href: "#", // "https://www.apexmarbleinc.com/granite-slabs"
         image: "/images/material-granite.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1FwDf1PHiWqkoIA6XOqqOcmY0WgsYA2uP=w1200",
         description: "An authentic classic known for enduring strength, dense mineral composition, and singular speckled aesthetics.",
@@ -182,7 +183,7 @@ export const websiteData = {
       {
         id: "marble",
         title: "Marble",
-        href: "https://www.apexmarbleinc.com/marble-slabs",
+        href: "#", // "https://www.apexmarbleinc.com/marble-slabs"
         image: "/images/material-marble.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1jtVPHdUzoO15BDYqtyGbqojuXDtFdWFT=w1200",
         description: "The timeless standard of luxury with luminous depth and iconic flow, lending unmatched grandeur to any space.",
@@ -191,7 +192,7 @@ export const websiteData = {
       {
         id: "quartz",
         title: "Quartz",
-        href: "https://www.apexmarbleinc.com/quartz-slabs",
+        href: "#", // "https://www.apexmarbleinc.com/quartz-slabs"
         image: "/images/material-quartz.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1brtNcaaI0A2M2DGEAVlVlaFIcSFMzNqy=w1200",
         description: "High-performance engineered stone combining pure crushed quartz with advanced polymers for non-porous durability.",
@@ -200,7 +201,7 @@ export const websiteData = {
       {
         id: "porcelain",
         title: "Porcelain",
-        href: "https://www.apexmarbleinc.com/porcelain-slabs",
+        href: "#", // "https://www.apexmarbleinc.com/porcelain-slabs"
         image: "/images/material-porcelain.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1Nr5Z8jJLsNhjn42597SzzHFuJPZD30En=w1200",
         description: "Lightweight ultra-compact slabs with zero porosity, suitable for seamless floor-to-ceiling cladding and outdoor bars.",
@@ -209,7 +210,7 @@ export const websiteData = {
       {
         id: "pre-fab",
         title: "Pre-Fab",
-        href: "https://www.apexmarbleinc.com/pre-fab",
+        href: "#", // "https://www.apexmarbleinc.com/pre-fab"
         image: "/images/material-prefab.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1RgdIRb_V150V-3Ec-6IthXFxANljBlzZ=w1200",
         description: "Pre-fabricated countertops with factory-milled edges ready for rapid turnaround, superior quality, and cost savings.",
@@ -225,7 +226,7 @@ export const websiteData = {
     paragraph1: "As modern living calls for more stylish and durable surfaces, the demand for premium natural stone has never been greater.",
     paragraph2: "Our solutions not only enhance the aesthetic and value of your space but also provide long-lasting strength and reliability. By choosing marble, granite, quartz, quartzite, tiles, and prefab countertops from Apex Marble, you protect your investment with materials that stand the test of time and transform your home or business into a showcase of quality and sophistication.",
     ctaText: "Contact us",
-    ctaHref: "https://www.apexmarbleinc.com/contact#contactus-2",
+    ctaHref: "#main-site-footer",
     backgroundImage: "/images/bg-timeless.jpg",
     remoteBackgroundImage: "https://assets.zyrosite.com/A1az8Ze6q1IGrDxp/fap_nobu_b01_part06_zona_lavabo__85422-3GZitWAqe0WDJmME.jpg"
   },
@@ -240,61 +241,61 @@ export const websiteData = {
     partners: [
       {
         name: "Gaia Flooring",
-        href: "https://gaiafloor.com/",
+        href: "#brand-partners-section",
         image: "/images/partner-gaia.png",
         remoteImage: "https://lh3.googleusercontent.com/d/1o7yRgmu7hnwTXtGCDArE-QWHXAlEhz-x=w600"
       },
       {
         name: "Silestone by Cosentino",
-        href: "https://www.silestoneusa.com",
+        href: "#brand-partners-section",
         image: "/images/partner-silestone.png",
         remoteImage: "https://lh3.googleusercontent.com/d/1XaoSkRECzxLT3J1itCFFQPe_xO0wS9qw=w600"
       },
       {
         name: "Cambria",
-        href: "https://www.cambriausa.com",
+        href: "#brand-partners-section",
         image: "/images/partner-cambria.png",
         remoteImage: "https://lh3.googleusercontent.com/d/14yPH1tRVX0iPd6JgAyOhDqGKi9H8FqyL=w600"
       },
       {
         name: "Caesarstone",
-        href: "https://www.caesarstoneus.com",
+        href: "#brand-partners-section",
         image: "/images/partner-caesarstone.png",
         remoteImage: "https://lh3.googleusercontent.com/d/1IA5AO18Bo7CQ4B3zuI5L9RbS9jezqzII=w600"
       },
       {
         name: "Dekton by Cosentino",
-        href: "https://www.dekton.com",
+        href: "#brand-partners-section",
         image: "/images/partner-dekton.png",
         remoteImage: "https://lh3.googleusercontent.com/d/1fWsnVsMKcFUyt7Dby_9veuFsN2gqPttu=w600"
       },
       {
         name: "MSI Surfaces",
-        href: "https://www.msisurfaces.com",
+        href: "#brand-partners-section",
         image: "/images/partner-msi.png",
         remoteImage: "https://lh3.googleusercontent.com/d/1zdnvJD-whKHm6bMmwi84_5Hv4oR1tE9H=w600"
       },
       {
         name: "Elysium Tiles",
-        href: "https://elysiumtile.com/",
+        href: "#brand-partners-section",
         image: "/images/partner-elysium.png",
         remoteImage: "https://lh3.googleusercontent.com/d/1_MHCnpP1Cp3GmjOoF0a092_p6KKMVo7N=w600"
       },
       {
         name: "Natural Stone Resources",
-        href: "https://nsrstone.com/",
+        href: "#brand-partners-section",
         image: "/images/partner-nsr.png",
         remoteImage: "https://lh3.googleusercontent.com/d/1ozpZanvWzOxt66AfmpPAeHma1ZQLD_Pw=w600"
       },
       {
         name: "Pera Tile",
-        href: "https://www.peratile.com/",
+        href: "#brand-partners-section",
         image: "/images/partner-pera.png",
         remoteImage: "https://lh3.googleusercontent.com/d/13JGQ_zE39M8ZwTaVSIT6BwhwU79Du5Ak=w600"
       },
       {
         name: "Raphael Stone",
-        href: "https://www.raphaelstoneusa.com/",
+        href: "#brand-partners-section",
         image: "/images/partner-raphael.png",
         remoteImage: "https://lh3.googleusercontent.com/d/1h1HuWXiW-1ZwMLp6crkFnOWRRay9336P=w600"
       }
@@ -309,7 +310,7 @@ export const websiteData = {
     paragraph: "Apex Marble offers a curated collection of premium slabs sourced from the world’s most prestigious quarries, from timeless marble to resilient quartzite. Our experts hand-select every piece, rigorously evaluating color, movement, and structural integrity to ensure only the finest materials grace your home. Our materials are chosen to complement both contemporary and timeless interior styles, ensuring they blend seamlessly into your vision. Our expert team will help you choose the perfect material to complement your project’s design, function, and budget.",
     trustedPill: "Trusted by Silicon Valley Homeowners",
     ctaText: "Learn More",
-    ctaHref: "https://www.apexmarbleinc.com/about",
+    ctaHref: "#timeless-elegance-section",
     imageDriveId: "1p2to0bZCMFmYojUzzii0ZyrVNw6F_zww",
     imageUrl: "/images/about-showroom.jpg",
     remoteImageUrl: "https://lh3.googleusercontent.com/d/1p2to0bZCMFmYojUzzii0ZyrVNw6F_zww=w1200",
@@ -331,7 +332,7 @@ export const websiteData = {
         name: "Yelp",
         stars: 4.5,
         ratingDisplay: "4.5 / 5",
-        href: "https://www.yelp.com/biz/apex-marble-san-jose-4",
+        href: "#apx-footer-reviews",
         iconType: "image",
         iconUrl: "https://cdn.freebiesupply.com/logos/large/2x/yelp-icon-logo-png-transparent.png",
         actionText: "Yelp"
@@ -340,7 +341,7 @@ export const websiteData = {
         name: "Google",
         stars: 4.8,
         ratingDisplay: "4.8 / 5",
-        href: "https://share.google/fWhLZcLgvWNodNS9W",
+        href: "#apx-footer-reviews",
         iconType: "image",
         iconUrl: "https://cdn.freebiesupply.com/logos/large/2x/google-icon-logo-png-transparent.png",
         actionText: "Google"
@@ -349,7 +350,7 @@ export const websiteData = {
         name: "Instagram",
         stars: null,
         ratingDisplay: "@apexmarbleinc",
-        href: "https://www.instagram.com/apexmarbleinc",
+        href: "#apx-footer-reviews",
         iconType: "image",
         iconUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png",
         actionText: "Instagram"
@@ -358,7 +359,7 @@ export const websiteData = {
         name: "Facebook",
         stars: null,
         ratingDisplay: "Follow Us",
-        href: "https://www.facebook.com/apexmarbleinc",
+        href: "#apx-footer-reviews",
         iconType: "facebook",
         actionText: "Facebook"
       },
@@ -366,7 +367,7 @@ export const websiteData = {
         name: "YouTube",
         stars: null,
         ratingDisplay: "Videos & Tours",
-        href: "https://www.youtube.com/@ApexMarbleInc",
+        href: "#apx-footer-reviews",
         iconType: "youtube",
         actionText: "YouTube"
       }

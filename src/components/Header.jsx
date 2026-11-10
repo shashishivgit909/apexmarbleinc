@@ -1,167 +1,180 @@
 import React, { useState, useEffect } from 'react';
-import { useCustomizer } from '../context/CustomizerContext';
 import { websiteData } from '../data/websiteData';
-import SectionToolbar from './SectionToolbar';
-import { ChevronDown, Menu, X, PhoneCall, Sparkles } from 'lucide-react';
+import { ChevronDown, Menu, X, PhoneCall, ArrowUpRight } from 'lucide-react';
+
+const PRIMARY_NAV_IDS = ['home', 'slabs', 'countertops', 'tiles', 'gallery', 'contact'];
 
 export default function Header() {
-  const { config } = useCustomizer();
-  const c = config.header;
   const { company, navigation } = websiteData;
 
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const primaryNavItems = PRIMARY_NAV_IDS
+    .map((id) => navigation.find((item) => item.id === id))
+    .filter(Boolean);
+  const moreNavItems = navigation.filter((item) => !PRIMARY_NAV_IDS.includes(item.id));
+
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const layoutVariants = [
-    { id: 'original', label: 'Apex Orange (Live Site)' },
-    { id: 'modernSplit', label: 'Split Modern + CTA' },
-    { id: 'floatingGlass', label: 'Floating Glass Island' }
-  ];
-
   return (
     <header
       id="main-navigation-header"
-      className={`site-header layout-${c.layout} ${isScrolled ? 'is-scrolled' : ''} ${c.isSticky ? 'sticky-header' : ''}`}
-      style={{
-        '--nav-bg': c.bg,
-        '--nav-text': c.text,
-        '--nav-hover': c.hoverText,
-        '--nav-accent': c.accent,
-        '--dropdown-bg': c.dropdownBg,
-        '--dropdown-text': c.dropdownText,
-        backgroundColor: c.layout === 'floatingGlass' && !isScrolled ? 'transparent' : c.bg
-      }}
+      className={`site-header ${isScrolled ? 'is-scrolled' : ''}`}
     >
-      <SectionToolbar
-        sectionKey="header"
-        sectionName="Navigation Header"
-        layoutOptions={layoutVariants}
-      />
-
-      <div className={`header-container ${c.layout === 'floatingGlass' ? 'floating-island-wrap' : ''}`}>
-        <div
-          className="header-inner"
-          style={{
-            backgroundColor: c.layout === 'floatingGlass' ? c.bg : undefined
-          }}
-        >
-          {/* Logo Branding */}
-          <div className="logo-brand">
-            <a href="/" className="logo-link">
-              <img
-                src={company.headerLogo}
-                alt={company.name}
-                className="site-logo"
-                onError={(e) => {
-                  if (company.headerLogoRemote && e.target.src !== company.headerLogoRemote) {
-                    e.target.src = company.headerLogoRemote;
-                  } else {
-                    e.target.style.display = 'none';
-                    e.target.nextElementSibling.style.display = 'block';
-                  }
-                }}
-              />
-              <span className="logo-fallback-text" style={{ display: 'none', color: c.text }}>
-                APEX MARBLE
-              </span>
-            </a>
+      <div className="header-container">
+        <div className="header-inner">
+          {/* LEFT-ALIGNED SECTION: Untouched Original Company Logo */}
+          <div className="header-left-group">
+            <div className="logo-brand">
+              <a href="#hero-slideshow-section" className="logo-link" aria-label={company.name}>
+                <img
+                  src={company.headerLogo}
+                  alt={company.name}
+                  className="site-logo"
+                  onError={(e) => {
+                    if (company.headerLogoRemote && e.target.src !== company.headerLogoRemote) {
+                      e.target.src = company.headerLogoRemote;
+                    }
+                  }}
+                />
+                <div className="logo-brand-text">
+                  <span className="brand-title">APEX MARBLE</span>
+                  <span className="brand-subtitle">NATURAL STONE &amp; SLABS</span>
+                </div>
+              </a>
+            </div>
           </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="desktop-nav" aria-label="Main Navigation">
-            <ul className="nav-list">
-              {navigation.map((item) => {
-                const hasSub = item.subItems && item.subItems.length > 0;
-                const isCurrentActive = activeDropdown === item.id;
+          {/* FREE SPACE IN BETWEEN CREATED BY JUSTIFY-CONTENT: SPACE-BETWEEN */}
 
-                return (
-                  <li
-                    key={item.id}
-                    className={`nav-item ${hasSub ? 'has-dropdown' : ''}`}
-                    onMouseEnter={() => hasSub && setActiveDropdown(item.id)}
-                    onMouseLeave={() => hasSub && setActiveDropdown(null)}
-                  >
-                    <a
-                      href={item.href}
-                      className="nav-link"
-                      style={{ color: c.text }}
-                      onClick={(e) => {
-                        if (hasSub && window.innerWidth < 1024) {
-                          e.preventDefault();
-                          setActiveDropdown(isCurrentActive ? null : item.id);
-                        }
-                      }}
+          {/* RIGHT-ALIGNED SECTION: Primary Navigation + 3-Horizontal-Lines Menu Icon + Request Estimate CTA */}
+          <div className="header-right-group">
+            <nav className="desktop-nav" aria-label="Main Navigation">
+              <ul className="nav-list">
+                {primaryNavItems.map((item) => {
+                  const hasSub = item.subItems && item.subItems.length > 0;
+                  const isCurrentActive = activeDropdown === item.id;
+
+                  return (
+                    <li
+                      key={item.id}
+                      className={`nav-item ${hasSub ? 'has-dropdown' : ''}`}
+                      onMouseEnter={() => hasSub && setActiveDropdown(item.id)}
+                      onMouseLeave={() => hasSub && setActiveDropdown(null)}
                     >
-                      <span>{item.name}</span>
-                      {hasSub && <ChevronDown size={14} className="dropdown-caret" />}
-                    </a>
-
-                    {/* Dropdown Menu */}
-                    {hasSub && (
-                      <div
-                        className={`dropdown-menu ${isCurrentActive ? 'is-visible' : ''}`}
-                        style={{
-                          backgroundColor: c.dropdownBg,
-                          color: c.dropdownText
+                      <a
+                        href={item.id === 'home' ? '/' : '#'}
+                        /* href={item.href} — route navigation to other pages commented out */
+                        className={`nav-link ${item.id === 'home' ? 'is-active' : ''}`}
+                        onClick={(e) => {
+                          if (item.id !== 'home') {
+                            e.preventDefault();
+                          }
+                          if (hasSub && window.innerWidth < 1100) {
+                            setActiveDropdown(isCurrentActive ? null : item.id);
+                          }
                         }}
                       >
-                        <div className="dropdown-arrow-indicator" style={{ borderBottomColor: c.dropdownBg }} />
-                        <ul className="dropdown-list">
-                          {item.subItems.map((sub, idx) => (
-                            <li key={idx} className="dropdown-item">
-                              <a
-                                href={sub.href}
-                                className="dropdown-link"
-                                style={{ color: c.dropdownText }}
-                              >
-                                {sub.name}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
+                        <span>{item.name}</span>
+                        {hasSub && <ChevronDown size={14} className="dropdown-caret" />}
+                      </a>
 
-          {/* Right Action on Layout 2 & 3 */}
-          {c.layout !== 'original' && (
+                      {hasSub && (
+                        <div className={`dropdown-menu ${isCurrentActive ? 'is-visible' : ''}`}>
+                          <ul className="dropdown-list">
+                            {item.subItems.map((sub, idx) => (
+                              <li key={idx} className="dropdown-item">
+                                <a
+                                  href="#"
+                                  /* href={sub.href} — subpage route navigation commented out */
+                                  onClick={(e) => e.preventDefault()}
+                                  className="dropdown-link"
+                                >
+                                  <span>{sub.name}</span>
+                                  <ArrowUpRight size={13} className="dropdown-link-icon" />
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
+
+                {/* 3-Horizontal-Lines Menu Icon right before Request Estimate */}
+                {moreNavItems.length > 0 && (
+                  <li
+                    className="nav-item has-dropdown nav-more-item"
+                    onMouseEnter={() => setActiveDropdown('more-menu')}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    <button
+                      type="button"
+                      className={`nav-more-btn ${activeDropdown === 'more-menu' ? 'is-open' : ''}`}
+                      aria-label="More navigation pages"
+                      aria-expanded={activeDropdown === 'more-menu'}
+                      onClick={() =>
+                        setActiveDropdown(activeDropdown === 'more-menu' ? null : 'more-menu')
+                      }
+                    >
+                      <Menu size={20} />
+                    </button>
+
+                    <div
+                      className={`dropdown-menu dropdown-menu-right ${
+                        activeDropdown === 'more-menu' ? 'is-visible' : ''
+                      }`}
+                    >
+                      <div className="dropdown-menu-label">More Pages</div>
+                      <ul className="dropdown-list">
+                        {moreNavItems.map((item) => (
+                          <li key={item.id} className="dropdown-item">
+                            <a
+                              href="#"
+                              /* href={item.href} — route navigation to other pages commented out */
+                              onClick={(e) => e.preventDefault()}
+                              className="dropdown-link"
+                            >
+                              <span>{item.name}</span>
+                              <ArrowUpRight size={13} className="dropdown-link-icon" />
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                )}
+              </ul>
+            </nav>
+
             <div className="header-right-action">
               <a
                 href={company.quoteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={(e) => e.preventDefault()}
                 className="header-cta-button"
-                style={{
-                  backgroundColor: c.accent || '#ff932f',
-                  color: '#ffffff'
-                }}
               >
-                <Sparkles size={14} />
-                <span>Get a Quote</span>
+                <span>Request Estimate</span>
+                <ArrowUpRight size={15} />
               </a>
             </div>
-          )}
+          </div>
 
-          {/* Mobile Hamburger Toggle */}
+          {/* Mobile Menu Toggle */}
           <button
             type="button"
             className="mobile-hamburger-btn"
-            style={{ color: c.text }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Navigation Menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
@@ -169,13 +182,7 @@ export default function Header() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div
-            className="mobile-nav-drawer"
-            style={{
-              backgroundColor: c.dropdownBg || '#1d1e20',
-              color: c.dropdownText || '#ffffff'
-            }}
-          >
+          <div className="mobile-nav-drawer">
             <div className="mobile-drawer-inner">
               <ul className="mobile-nav-list">
                 {navigation.map((item) => {
@@ -186,9 +193,15 @@ export default function Header() {
                     <li key={item.id} className="mobile-nav-item">
                       <div className="mobile-item-row">
                         <a
-                          href={item.href}
+                          href={item.id === 'home' ? '/' : '#'}
+                          /* href={item.href} — route navigation commented out */
                           className="mobile-item-link"
-                          onClick={() => !hasSub && setMobileMenuOpen(false)}
+                          onClick={(e) => {
+                            if (item.id !== 'home') {
+                              e.preventDefault();
+                            }
+                            if (!hasSub) setMobileMenuOpen(false);
+                          }}
                         >
                           {item.name}
                         </a>
@@ -215,9 +228,13 @@ export default function Header() {
                           {item.subItems.map((sub, idx) => (
                             <li key={idx}>
                               <a
-                                href={sub.href}
+                                href="#"
+                                /* href={sub.href} — route navigation commented out */
                                 className="mobile-sublink"
-                                onClick={() => setMobileMenuOpen(false)}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  setMobileMenuOpen(false);
+                                }}
                               >
                                 {sub.name}
                               </a>
@@ -231,13 +248,9 @@ export default function Header() {
               </ul>
 
               <div className="mobile-drawer-footer">
-                <a
-                  href={`tel:+1${company.phonePlain}`}
-                  className="mobile-call-action"
-                  style={{ backgroundColor: c.accent || '#ff932f', color: '#fff' }}
-                >
+                <a href={`tel:+1${company.phonePlain}`} className="mobile-call-action">
                   <PhoneCall size={16} />
-                  <span>Call (408) 278-1300</span>
+                  <span>Call {company.phone}</span>
                 </a>
               </div>
             </div>
