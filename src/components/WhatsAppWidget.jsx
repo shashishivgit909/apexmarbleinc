@@ -7,55 +7,65 @@ export default function WhatsAppWidget() {
   const { company } = websiteData;
 
   return (
-    <div className="whatsapp-floating-widget">
+    <div className="apx-concierge-wrap">
       {isOpen && (
-        <div className="whatsapp-popup-box">
-          <div className="popup-header">
-            <div className="popup-agent">
-              <span className="online-indicator" />
+        <div className="apx-concierge-card" role="dialog" aria-label="Apex Marble Showroom Concierge">
+          <div className="apx-concierge-top">
+            <div className="apx-concierge-agent-info">
+              <span className="apx-agent-dot" />
               <div>
-                <strong>Apex Marble Concierge</strong>
-                <p>San Jose Showroom Specialist</p>
+                <strong className="apx-agent-name">Apex Marble Concierge</strong>
+                <p className="apx-agent-role">San Jose Showroom Specialist</p>
               </div>
             </div>
             <button
               type="button"
-              className="popup-close-btn"
+              className="apx-concierge-close-btn"
               onClick={() => setIsOpen(false)}
-              aria-label="Close Concierge Chat"
+              aria-label="Close Concierge"
             >
-              <X size={16} />
+              <X size={15} />
             </button>
           </div>
 
-          <div className="popup-body">
-            <p>
-              Welcome to Apex Marble! How can we assist you with natural stone slabs, marble,
-              quartzite, or custom countertops today?
+          <div className="apx-concierge-content">
+            <p className="apx-concierge-message">
+              Welcome to Apex Marble! How can we assist you with natural stone slabs, exotic quartzite, or custom countertop fabrication today?
             </p>
 
-            <div className="popup-actions">
+            <div className="apx-concierge-actions">
               <a
                 href="#main-site-footer"
-                onClick={() => setIsOpen(false)}
-                className="popup-btn whatsapp-action-btn"
+                onClick={() => {
+                  setIsOpen(false);
+                  const el = document.getElementById('main-site-footer');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="apx-concierge-btn apx-btn-inquiry"
               >
-                <MessageCircle size={16} />
-                <span>Chat on WhatsApp</span>
+                <MessageCircle size={15} />
+                <span>Showroom Consultation</span>
               </a>
 
-              <a href={`tel:${company.phonePlain}`} className="popup-btn phone-action-btn">
-                <Phone size={16} />
+              <a
+                href={`tel:${company.phonePlain}`}
+                className="apx-concierge-btn apx-btn-call"
+              >
+                <Phone size={15} />
                 <span>Call {company.phone}</span>
               </a>
 
               <a
-                href={company.quoteUrl}
-                onClick={() => setIsOpen(false)}
-                className="popup-btn quote-action-btn"
+                href="#materials-showcase-section"
+                onClick={() => {
+                  setIsOpen(false);
+                  const el = document.getElementById('materials-showcase-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="apx-concierge-btn apx-btn-view"
               >
-                <FileText size={16} />
-                <span>Request Slab Quote</span>
+                <FileText size={15} />
+                <span>Browse Slab Inventory</span>
               </a>
             </div>
           </div>
@@ -64,12 +74,12 @@ export default function WhatsAppWidget() {
 
       <button
         type="button"
-        className="whats-app-bubble"
+        className="apx-concierge-trigger"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Contact Apex Marble Concierge"
-        title="Chat with Apex Marble"
+        title="Chat with Apex Marble Concierge"
       >
-        <MessageCircle size={26} color="#FAF7F2" />
+        <MessageCircle size={24} />
       </button>
     </div>
   );

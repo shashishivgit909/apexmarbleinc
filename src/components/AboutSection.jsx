@@ -1,21 +1,39 @@
 import React from 'react';
 import { websiteData } from '../data/websiteData';
-import { Award, ShieldCheck, CheckCircle2, ArrowUpRight, MapPin } from 'lucide-react';
+import { Award, ShieldCheck, Gem, Compass, ArrowUpRight, MapPin } from 'lucide-react';
 
 export default function AboutSection() {
   const { aboutSection, company } = websiteData;
 
+  const pillars = [
+    {
+      icon: Gem,
+      title: 'Direct Quarry Curation',
+      text: 'Every slab is individually inspected for mineral crystallization, vein movement, and structural density.'
+    },
+    {
+      icon: Compass,
+      title: 'Architectural Pairing Guidance',
+      text: 'Tailored material selection for architects, interior designers, general contractors, and homeowners.'
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Silicon Valley Provenance',
+      text: 'Over 18 years serving San Jose and the Greater Bay Area with trusted natural and engineered surfaces.'
+    }
+  ];
+
   return (
-    <section id="about-experience-section" className="about-architectural-section">
-      <div className="section-container">
-        <div className="about-editorial-grid">
-          {/* Left Column: Showroom Imagery & Heritage Badges */}
-          <div className="about-visual-column">
-            <div className="about-image-frame">
+    <section id="about-experience-section" className="apx-about-section">
+      <div className="apx-container">
+        <div className="apx-about-grid">
+          {/* Left Column: Framed Showroom Photography & Metrics */}
+          <div className="apx-about-media-col">
+            <div className="apx-about-frame">
               <img
                 src={aboutSection.imageUrl}
                 alt="Apex Marble San Jose Slab Showroom"
-                className="about-showroom-img"
+                className="apx-about-img"
                 loading="lazy"
                 onError={(e) => {
                   if (aboutSection.remoteImageUrl && e.target.src !== aboutSection.remoteImageUrl) {
@@ -23,72 +41,70 @@ export default function AboutSection() {
                   }
                 }}
               />
-
-              {/* Experience Ribbon Badge */}
-              <div className="about-experience-float">
-                <Award size={20} className="experience-icon" />
+              <div className="apx-about-badge">
+                <Award size={20} />
                 <div>
-                  <strong>{aboutSection.ribbon}</strong>
-                  <span>San Jose, Silicon Valley</span>
+                  <span className="apx-badge-title">{aboutSection.ribbon}</span>
+                  <span className="apx-badge-sub">{aboutSection.trustedPill}</span>
                 </div>
               </div>
             </div>
 
-            <div className="about-trusted-banner">
-              <ShieldCheck size={18} className="trusted-banner-icon" />
-              <span>{aboutSection.trustedPill}</span>
-            </div>
-          </div>
-
-          {/* Right Column: Editorial Copy & Key Metrics */}
-          <div className="about-narrative-column">
-            <div className="editorial-kicker">
-              <span>{aboutSection.welcomeText}</span>
-            </div>
-
-            <h2 className="about-main-headline">
-              Silicon Valley’s Trusted Name in Natural Stone
-            </h2>
-
-            <p className="about-lead-paragraph">{aboutSection.paragraph}</p>
-
-            <div className="about-pillars-list">
-              <div className="about-pillar-item">
-                <CheckCircle2 size={18} className="pillar-check" />
-                <span>Hand-selected full slabs from premier Italian, Brazilian &amp; global quarries</span>
-              </div>
-              <div className="about-pillar-item">
-                <CheckCircle2 size={18} className="pillar-check" />
-                <span>Rigorous inspection for natural veining movement, density &amp; structural integrity</span>
-              </div>
-              <div className="about-pillar-item">
-                <CheckCircle2 size={18} className="pillar-check" />
-                <span>Dedicated guidance for homeowners, interior designers, architects &amp; builders</span>
-              </div>
-            </div>
-
-            {/* 4 Key Architectural Metrics */}
-            <div className="about-metrics-row">
+            {/* 4 Architectural Metrics */}
+            <div className="apx-stats-grid">
               {aboutSection.stats.map((stat, idx) => (
-                <div key={idx} className="about-metric-box">
-                  <span className="metric-value">{stat.value}</span>
-                  <span className="metric-label">{stat.label}</span>
+                <div key={idx} className="apx-stat-box">
+                  <span className="apx-stat-val">{stat.value}</span>
+                  <span className="apx-stat-lbl">{stat.label}</span>
                 </div>
               ))}
             </div>
+          </div>
 
-            <div className="about-actions-row">
-              <a href={aboutSection.ctaHref} className="btn-stone-primary">
-                <span>{aboutSection.ctaText} About Our Showroom</span>
-                <ArrowUpRight size={16} />
-              </a>
+          {/* Right Column: Editorial Narrative & Atelier Pillars */}
+          <div className="apx-about-copy-col">
+            <span className="apx-eyebrow">
+              <Award size={13} />
+              <span>{aboutSection.welcomeText}</span>
+            </span>
+
+            <h2 className="apx-section-title apx-about-title">
+              {aboutSection.headline}
+            </h2>
+
+            <p className="apx-about-body">{aboutSection.paragraph}</p>
+
+            {/* 3 Architectural Pillars */}
+            <div className="apx-pillars-stack">
+              {pillars.map((pillar, idx) => {
+                const IconComponent = pillar.icon;
+                return (
+                  <div key={idx} className="apx-pillar-card">
+                    <div className="apx-pillar-icon-box">
+                      <IconComponent size={17} />
+                    </div>
+                    <div>
+                      <h3 className="apx-pillar-name">{pillar.title}</h3>
+                      <p className="apx-pillar-desc">{pillar.text}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="apx-about-actions">
               <a
-                href={company.mapsUrl}
-                className="about-directions-link"
+                href="#materials-showcase-section"
+                className="apx-btn-dark"
               >
-                <MapPin size={16} />
-                <span>Visit San Jose Warehouse</span>
+                <span>Explore Slabs</span>
+                <ArrowUpRight size={15} />
               </a>
+
+              <div className="apx-location-pill">
+                <MapPin size={14} />
+                <span>{company.address}</span>
+              </div>
             </div>
           </div>
         </div>

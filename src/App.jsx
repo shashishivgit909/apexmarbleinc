@@ -1,44 +1,40 @@
 import React from 'react';
-import TopBar from './components/TopBar';
 import Header from './components/Header';
 import HeroSlideshow from './components/HeroSlideshow';
 import MaterialsShowcase from './components/MaterialsShowcase';
-import TimelessElegance from './components/TimelessElegance';
 import AboutSection from './components/AboutSection';
+import TimelessElegance from './components/TimelessElegance';
 import BrandPartners from './components/BrandPartners';
 import Footer from './components/Footer';
 import WhatsAppWidget from './components/WhatsAppWidget';
 
 export default function App() {
   return (
-    <div className="apex-app-root">
-      {/* Top Architectural Contact Bar */}
-      <TopBar />
-
-      {/* Main Sticky Navigation Header (with untouched original company logo) */}
+    <div className="apx-root">
+      {/* Streamlined Architectural Header (Decluttered, Logo 100% Untouched) */}
       <Header />
 
       <main id="main-content">
-        {/* Section 1: Hero Architectural Stone Showcase (11 Slides) */}
+        {/* Section 1: Full-Bleed Architectural Hero Slideshow (11 Slides) */}
         <HeroSlideshow />
 
-        {/* Section 2: Curated Stone Materials (Quartzite, Granite, Marble, Quartz, Porcelain, Pre-Fab) */}
-        <MaterialsShowcase />
-
-        {/* Section 3: About Apex Marble & San Jose Showroom Experience */}
+        {/* Section 2: Editorial Showroom Heritage & 18 Years Experience */}
         <AboutSection />
 
-        {/* Section 4: Timeless Elegance & Architectural Value */}
+        {/* Section 3: Curated Stone & Slab Specification Gallery */}
+        <MaterialsShowcase />
+
+        {/* Section 4: Timeless Elegance Architectural Showcase */}
         <TimelessElegance />
 
-        {/* Section 5: Global Industry & Brand Partners */}
+        {/* Section 5: Authorized Global Surface Partners Marquee */}
         <BrandPartners />
       </main>
 
-      {/* Site Footer with Verified Reviews, Showroom Info & Socials */}
+      {/* Comprehensive Architectural Directory & Customer Reviews Footer */}
       <Footer />
 
-      {/* Floating Quick Concierge Contact Widget */}
+      {/* Floating Concierge Contact Widget */}
       <WhatsAppWidget />
     </div>
   );

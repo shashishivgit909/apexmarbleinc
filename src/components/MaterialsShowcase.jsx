@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { websiteData } from '../data/websiteData';
-import { ArrowUpRight, Check, Layers } from 'lucide-react';
+import { ArrowUpRight, Layers, CheckCircle2 } from 'lucide-react';
 
 export default function MaterialsShowcase() {
   const { materialsSection } = websiteData;
@@ -11,27 +11,29 @@ export default function MaterialsShowcase() {
     activeFilter === 'all' ? items : items.filter((item) => item.id === activeFilter);
 
   return (
-    <section id="materials-showcase-section" className="materials-architectural-section">
-      <div className="section-container">
-        {/* Section Editorial Header */}
-        <div className="section-editorial-header">
-          <div className="editorial-kicker">
-            <Layers size={14} />
-            <span>ARCHITECTURAL STONE COLLECTIONS</span>
+    <section id="materials-showcase-section" className="apx-materials-section">
+      <div className="apx-container">
+        {/* Section Header with Category Tabs */}
+        <div className="apx-materials-header">
+          <div className="apx-materials-titles">
+            <span className="apx-eyebrow">
+              <Layers size={13} />
+              <span>Curated Natural &amp; Engineered Surfaces</span>
+            </span>
+            <h2 className="apx-section-title">{materialsSection.heading}</h2>
+            <p className="apx-section-sub">{materialsSection.subheading}</p>
           </div>
-          <h2 className="editorial-heading">{materialsSection.heading}</h2>
-          <p className="editorial-subheading">{materialsSection.subheading}</p>
 
-          {/* Filter Tabs */}
-          <div className="materials-filter-bar" role="tablist" aria-label="Filter stone categories">
+          {/* Minimalist Filter Bar */}
+          <div className="apx-filter-group" role="tablist" aria-label="Filter Stone Categories">
             <button
               type="button"
               role="tab"
               aria-selected={activeFilter === 'all'}
-              className={`stone-filter-pill ${activeFilter === 'all' ? 'is-active' : ''}`}
+              className={`apx-filter-btn ${activeFilter === 'all' ? 'is-active' : ''}`}
               onClick={() => setActiveFilter('all')}
             >
-              All Surfaces ({items.length})
+              All Slabs ({items.length})
             </button>
             {items.map((item) => (
               <button
@@ -39,7 +41,7 @@ export default function MaterialsShowcase() {
                 type="button"
                 role="tab"
                 aria-selected={activeFilter === item.id}
-                className={`stone-filter-pill ${activeFilter === item.id ? 'is-active' : ''}`}
+                className={`apx-filter-btn ${activeFilter === item.id ? 'is-active' : ''}`}
                 onClick={() => setActiveFilter(item.id)}
               >
                 {item.title}
@@ -48,22 +50,20 @@ export default function MaterialsShowcase() {
           </div>
         </div>
 
-        {/* Curated 3-Column Architectural Stone Grid */}
-        <div className="stone-cards-grid">
-          {visibleItems.map((item) => (
-            <article key={item.id} className="stone-architectural-card">
-              <a
-                href="#"
-                /* href={item.href} — route navigation to subpage commented out */
-                onClick={(e) => e.preventDefault()}
-                className="stone-card-media-link"
-                aria-label={`Explore ${item.title} Slabs`}
-              >
-                <div className="stone-card-media">
+        {/* 3-Column Luxury Slab Gallery Grid */}
+        <div className="apx-materials-grid">
+          {visibleItems.map((item) => {
+            const originalIndex = items.findIndex((x) => x.id === item.id) + 1;
+            const badgeNum = String(originalIndex).padStart(2, '0');
+
+            return (
+              <article key={item.id} className="apx-material-card">
+                <div className="apx-card-media">
+                  <span className="apx-card-series">SERIES {badgeNum}</span>
                   <img
                     src={item.image}
-                    alt={`${item.title} Natural Stone Slab`}
-                    className="stone-card-img"
+                    alt={item.title}
+                    className="apx-card-img"
                     loading="lazy"
                     onError={(e) => {
                       if (item.remoteImage && e.target.src !== item.remoteImage) {
@@ -71,51 +71,47 @@ export default function MaterialsShowcase() {
                       }
                     }}
                   />
-                  <span className="stone-index-badge">
-                    0{items.findIndex((i) => i.id === item.id) + 1}
-                  </span>
+                  <div className="apx-card-hover-overlay">
+                    <span>Explore {item.title}</span>
+                    <ArrowUpRight size={14} />
+                  </div>
                 </div>
-              </a>
 
-              <div className="stone-card-body">
-                <div className="stone-card-title-row">
-                  <h3>
+                <div className="apx-card-info">
+                  <div className="apx-card-heading-row">
+                    <h3 className="apx-card-title">{item.title}</h3>
+                    <span className="apx-card-status">In Stock</span>
+                  </div>
+
+                  <p className="apx-card-desc">{item.description}</p>
+
+                  <ul className="apx-card-features">
+                    {item.features.map((feat, fIdx) => (
+                      <li key={fIdx} className="apx-feature-tag">
+                        <CheckCircle2 size={12} />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="apx-card-action">
                     <a
-                      href="#"
-                      /* href={item.href} — route navigation commented out */
-                      onClick={(e) => e.preventDefault()}
+                      href="#main-site-footer"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const el = document.getElementById('main-site-footer');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="apx-card-link"
                     >
-                      {item.title}
+                      <span>Inquire About {item.title} Slabs</span>
+                      <ArrowUpRight size={14} />
                     </a>
-                  </h3>
-                  <span className="stone-surface-tag">Natural &amp; Engineered</span>
+                  </div>
                 </div>
-
-                <p className="stone-card-description">{item.description}</p>
-
-                <ul className="stone-specs-list">
-                  {item.features.map((feat, fIdx) => (
-                    <li key={fIdx} className="stone-spec-chip">
-                      <Check size={12} className="spec-check-icon" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="stone-card-footer">
-                  <a
-                    href="#"
-                    /* href={item.href} — route navigation commented out */
-                    onClick={(e) => e.preventDefault()}
-                    className="stone-explore-btn"
-                  >
-                    <span>Explore {item.title} Slabs</span>
-                    <ArrowUpRight size={16} />
-                  </a>
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

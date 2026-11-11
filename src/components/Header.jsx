@@ -1,262 +1,280 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { websiteData } from '../data/websiteData';
-import { ChevronDown, Menu, X, PhoneCall, ArrowUpRight } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
 
-const PRIMARY_NAV_IDS = ['home', 'slabs', 'countertops', 'tiles', 'gallery', 'contact'];
+// Important headings displayed in the desktop navigation headers
+const IMPORTANT_NAV_IDS = ['home', 'slabs', 'tiles', 'countertops', 'gallery', 'about', 'contact'];
 
 export default function Header() {
   const { company, navigation } = websiteData;
 
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [sideMenuOpen, setSideMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const menuRef = useRef(null);
 
-  const primaryNavItems = PRIMARY_NAV_IDS
+  // 1. Important headings for desktop navigation headers
+  const importantNavItems = IMPORTANT_NAV_IDS
     .map((id) => navigation.find((item) => item.id === id))
     .filter(Boolean);
-  const moreNavItems = navigation.filter((item) => !PRIMARY_NAV_IDS.includes(item.id));
+
+  // 2. Rest remaining headings for desktop side menu icon (zero extra text)
+  const remainingNavItems = navigation.filter(
+    (item) => !IMPORTANT_NAV_IDS.includes(item.id)
+  );
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setSideMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleNavClick = (e, item) => {
+    if (item.id === 'home') {
+      return;
+    }
+    if (item.id === 'about') {
+      e.preventDefault();
+      const el = document.getElementById('about-experience-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    if (item.id === 'gallery' || item.id === 'slabs') {
+      e.preventDefault();
+      const el = document.getElementById('materials-showcase-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    if (item.id === 'contact') {
+      e.preventDefault();
+      const el = document.getElementById('main-site-footer');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    // Prevent routing to separate pages
+    e.preventDefault();
+  };
+
   return (
     <header
       id="main-navigation-header"
-      className={`site-header ${isScrolled ? 'is-scrolled' : ''}`}
+      className={`apx-header ${isScrolled ? 'is-scrolled' : ''}`}
     >
-      <div className="header-container">
-        <div className="header-inner">
-          {/* LEFT-ALIGNED SECTION: Untouched Original Company Logo */}
-          <div className="header-left-group">
-            <div className="logo-brand">
-              <a href="#hero-slideshow-section" className="logo-link" aria-label={company.name}>
-                <img
-                  src={company.headerLogo}
-                  alt={company.name}
-                  className="site-logo"
-                  onError={(e) => {
-                    if (company.headerLogoRemote && e.target.src !== company.headerLogoRemote) {
-                      e.target.src = company.headerLogoRemote;
-                    }
-                  }}
-                />
-                <div className="logo-brand-text">
-                  <span className="brand-title">APEX MARBLE</span>
-                  <span className="brand-subtitle">NATURAL STONE &amp; SLABS</span>
-                </div>
-              </a>
+      <div className="apx-container apx-header-inner">
+        {/* LEFT: Original Company Logo (100% Untouched) + Architectural Typography */}
+        <div className="apx-brand-block">
+          <a href="#hero-slideshow-section" className="apx-brand-link" aria-label={company.name}>
+            <img
+              src={company.headerLogo}
+              alt={company.name}
+              className="apx-brand-logo"
+              onError={(e) => {
+                if (company.headerLogoRemote && e.target.src !== company.headerLogoRemote) {
+                  e.target.src = company.headerLogoRemote;
+                }
+              }}
+            />
+            <div className="apx-brand-text">
+              <span className="apx-brand-title">APEX MARBLE</span>
+              <span className="apx-brand-subtitle">Natural Stone Atelier</span>
             </div>
-          </div>
-
-          {/* FREE SPACE IN BETWEEN CREATED BY JUSTIFY-CONTENT: SPACE-BETWEEN */}
-
-          {/* RIGHT-ALIGNED SECTION: Primary Navigation + 3-Horizontal-Lines Menu Icon + Request Estimate CTA */}
-          <div className="header-right-group">
-            <nav className="desktop-nav" aria-label="Main Navigation">
-              <ul className="nav-list">
-                {primaryNavItems.map((item) => {
-                  const hasSub = item.subItems && item.subItems.length > 0;
-                  const isCurrentActive = activeDropdown === item.id;
-
-                  return (
-                    <li
-                      key={item.id}
-                      className={`nav-item ${hasSub ? 'has-dropdown' : ''}`}
-                      onMouseEnter={() => hasSub && setActiveDropdown(item.id)}
-                      onMouseLeave={() => hasSub && setActiveDropdown(null)}
-                    >
-                      <a
-                        href={item.id === 'home' ? '/' : '#'}
-                        /* href={item.href} — route navigation to other pages commented out */
-                        className={`nav-link ${item.id === 'home' ? 'is-active' : ''}`}
-                        onClick={(e) => {
-                          if (item.id !== 'home') {
-                            e.preventDefault();
-                          }
-                          if (hasSub && window.innerWidth < 1100) {
-                            setActiveDropdown(isCurrentActive ? null : item.id);
-                          }
-                        }}
-                      >
-                        <span>{item.name}</span>
-                        {hasSub && <ChevronDown size={14} className="dropdown-caret" />}
-                      </a>
-
-                      {hasSub && (
-                        <div className={`dropdown-menu ${isCurrentActive ? 'is-visible' : ''}`}>
-                          <ul className="dropdown-list">
-                            {item.subItems.map((sub, idx) => (
-                              <li key={idx} className="dropdown-item">
-                                <a
-                                  href="#"
-                                  /* href={sub.href} — subpage route navigation commented out */
-                                  onClick={(e) => e.preventDefault()}
-                                  className="dropdown-link"
-                                >
-                                  <span>{sub.name}</span>
-                                  <ArrowUpRight size={13} className="dropdown-link-icon" />
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </li>
-                  );
-                })}
-
-                {/* 3-Horizontal-Lines Menu Icon right before Request Estimate */}
-                {moreNavItems.length > 0 && (
-                  <li
-                    className="nav-item has-dropdown nav-more-item"
-                    onMouseEnter={() => setActiveDropdown('more-menu')}
-                    onMouseLeave={() => setActiveDropdown(null)}
-                  >
-                    <button
-                      type="button"
-                      className={`nav-more-btn ${activeDropdown === 'more-menu' ? 'is-open' : ''}`}
-                      aria-label="More navigation pages"
-                      aria-expanded={activeDropdown === 'more-menu'}
-                      onClick={() =>
-                        setActiveDropdown(activeDropdown === 'more-menu' ? null : 'more-menu')
-                      }
-                    >
-                      <Menu size={20} />
-                    </button>
-
-                    <div
-                      className={`dropdown-menu dropdown-menu-right ${
-                        activeDropdown === 'more-menu' ? 'is-visible' : ''
-                      }`}
-                    >
-                      <div className="dropdown-menu-label">More Pages</div>
-                      <ul className="dropdown-list">
-                        {moreNavItems.map((item) => (
-                          <li key={item.id} className="dropdown-item">
-                            <a
-                              href="#"
-                              /* href={item.href} — route navigation to other pages commented out */
-                              onClick={(e) => e.preventDefault()}
-                              className="dropdown-link"
-                            >
-                              <span>{item.name}</span>
-                              <ArrowUpRight size={13} className="dropdown-link-icon" />
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </li>
-                )}
-              </ul>
-            </nav>
-
-            <div className="header-right-action">
-              <a
-                href={company.quoteUrl}
-                onClick={(e) => e.preventDefault()}
-                className="header-cta-button"
-              >
-                <span>Request Estimate</span>
-                <ArrowUpRight size={15} />
-              </a>
-            </div>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            type="button"
-            className="mobile-hamburger-btn"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Navigation Menu"
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
+          </a>
         </div>
 
-        {/* Mobile Navigation Drawer */}
-        {mobileMenuOpen && (
-          <div className="mobile-nav-drawer">
-            <div className="mobile-drawer-inner">
-              <ul className="mobile-nav-list">
-                {navigation.map((item) => {
-                  const hasSub = item.subItems && item.subItems.length > 0;
-                  const isExpanded = activeDropdown === item.id;
+        {/* RIGHT GROUP */}
+        <div className="apx-header-actions-group">
+          {/* Desktop Navigation: Important Headings Only */}
+          <nav className="apx-desktop-nav" aria-label="Main Navigation">
+            <ul className="apx-nav-list">
+              {importantNavItems.map((item) => {
+                const hasSub = item.subItems && item.subItems.length > 0;
+                const isOpen = activeDropdown === item.id;
+                const isHome = item.id === 'home';
 
-                  return (
-                    <li key={item.id} className="mobile-nav-item">
-                      <div className="mobile-item-row">
-                        <a
-                          href={item.id === 'home' ? '/' : '#'}
-                          /* href={item.href} — route navigation commented out */
-                          className="mobile-item-link"
-                          onClick={(e) => {
-                            if (item.id !== 'home') {
-                              e.preventDefault();
-                            }
-                            if (!hasSub) setMobileMenuOpen(false);
-                          }}
-                        >
-                          {item.name}
-                        </a>
-                        {hasSub && (
-                          <button
-                            type="button"
-                            className="mobile-expand-btn"
-                            onClick={() => setActiveDropdown(isExpanded ? null : item.id)}
-                            aria-label={`Toggle ${item.name} submenu`}
-                          >
-                            <ChevronDown
-                              size={18}
-                              style={{
-                                transform: isExpanded ? 'rotate(180deg)' : 'rotate(0)',
-                                transition: 'transform 0.25s'
-                              }}
-                            />
-                          </button>
-                        )}
-                      </div>
+                return (
+                  <li
+                    key={item.id}
+                    className={`apx-nav-item ${hasSub ? 'has-folder' : ''}`}
+                    onMouseEnter={() => hasSub && setActiveDropdown(item.id)}
+                    onMouseLeave={() => hasSub && setActiveDropdown(null)}
+                  >
+                    <a
+                      href={isHome ? '#hero-slideshow-section' : '#'}
+                      className={`apx-nav-link ${isHome ? 'is-active' : ''}`}
+                      onClick={(e) => handleNavClick(e, item)}
+                    >
+                      <span>{item.name}</span>
+                      {hasSub && <ChevronDown size={13} className={`apx-caret ${isOpen ? 'is-open' : ''}`} />}
+                    </a>
 
-                      {hasSub && isExpanded && (
-                        <ul className="mobile-submenu">
+                    {hasSub && (
+                      <div className={`apx-dropdown-card ${isOpen ? 'is-visible' : ''}`}>
+                        <ul className="apx-dropdown-list">
                           {item.subItems.map((sub, idx) => (
                             <li key={idx}>
                               <a
                                 href="#"
                                 /* href={sub.href} — route navigation commented out */
-                                className="mobile-sublink"
                                 onClick={(e) => {
                                   e.preventDefault();
-                                  setMobileMenuOpen(false);
+                                  setActiveDropdown(null);
+                                  const el = document.getElementById('materials-showcase-section');
+                                  if (el) el.scrollIntoView({ behavior: 'smooth' });
                                 }}
+                                className="apx-dropdown-link"
                               >
-                                {sub.name}
+                                <span>{sub.name}</span>
+                                <ArrowUpRight size={13} className="apx-dropdown-icon" />
                               </a>
                             </li>
                           ))}
                         </ul>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
 
-              <div className="mobile-drawer-footer">
-                <a href={`tel:+1${company.phonePlain}`} className="mobile-call-action">
-                  <PhoneCall size={16} />
-                  <span>Call {company.phone}</span>
-                </a>
+          {/* Desktop Side Icon (Menu) for Remaining Headings (ZERO extra text) */}
+          <div className="apx-desktop-menu-wrap" ref={menuRef}>
+            <button
+              type="button"
+              className={`apx-menu-icon-btn ${sideMenuOpen ? 'is-active' : ''}`}
+              onClick={() => setSideMenuOpen((prev) => !prev)}
+              aria-label={sideMenuOpen ? 'Close Menu' : 'Open Menu'}
+              aria-expanded={sideMenuOpen}
+              title="More Headings"
+            >
+              {sideMenuOpen ? <X size={20} strokeWidth={1.8} /> : <Menu size={20} strokeWidth={1.8} />}
+            </button>
+
+            {/* Desktop Side Icon Dropdown: Remaining Headings ONLY (No extra text) */}
+            {sideMenuOpen && (
+              <div
+                className="apx-side-menu-dropdown"
+                role="dialog"
+                aria-label="Remaining Headings"
+              >
+                <ul className="apx-side-menu-list">
+                  {remainingNavItems.map((item) => (
+                    <li key={item.id} className="apx-side-menu-item">
+                      <a
+                        href="#"
+                        /* href={item.href} — route navigation commented out */
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSideMenuOpen(false);
+                          const el = document.getElementById('materials-showcase-section');
+                          if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="apx-side-menu-link"
+                      >
+                        <span>{item.name}</span>
+                        <ArrowUpRight size={14} className="apx-side-menu-icon" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
+            )}
           </div>
-        )}
+
+          {/* Mobile Menu Button: Toggles Mobile Drawer with ALL headings as previous */}
+          <button
+            type="button"
+            className={`apx-mobile-btn ${mobileMenuOpen ? 'is-active' : ''}`}
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X size={24} strokeWidth={1.8} /> : <Menu size={24} strokeWidth={1.8} />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Drawer: Contains ALL Headings in Mobile View as Previous */}
+      {mobileMenuOpen && (
+        <div className="apx-mobile-drawer" role="dialog" aria-label="Mobile Navigation Menu">
+          <div className="apx-container">
+            <ul className="apx-mobile-list">
+              {navigation.map((item) => {
+                const hasSub = item.subItems && item.subItems.length > 0;
+                const isExpanded = activeDropdown === item.id;
+
+                return (
+                  <li key={item.id} className="apx-mobile-item">
+                    <div className="apx-mobile-row">
+                      <a
+                        href={item.id === 'home' ? '#hero-slideshow-section' : '#'}
+                        className="apx-mobile-link"
+                        onClick={(e) => {
+                          handleNavClick(e, item);
+                          if (!hasSub) setMobileMenuOpen(false);
+                        }}
+                      >
+                        {item.name}
+                      </a>
+                      {hasSub && (
+                        <button
+                          type="button"
+                          className="apx-mobile-expand"
+                          onClick={() => setActiveDropdown(isExpanded ? null : item.id)}
+                          aria-label={`Toggle ${item.name} submenu`}
+                        >
+                          <ChevronDown
+                            size={18}
+                            style={{
+                              transform: isExpanded ? 'rotate(180deg)' : 'rotate(0)',
+                              transition: 'transform 0.25s'
+                            }}
+                          />
+                        </button>
+                      )}
+                    </div>
+
+                    {hasSub && isExpanded && (
+                      <ul className="apx-mobile-sublist">
+                        {item.subItems.map((sub, idx) => (
+                          <li key={idx}>
+                            <a
+                              href="#"
+                              /* href={sub.href} — route navigation commented out */
+                              className="apx-mobile-sublink"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setMobileMenuOpen(false);
+                                const el = document.getElementById('materials-showcase-section');
+                                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                              }}
+                            >
+                              {sub.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

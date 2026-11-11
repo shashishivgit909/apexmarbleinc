@@ -1,9 +1,10 @@
 import React from 'react';
 import { websiteData } from '../data/websiteData';
-import { Star, Phone, Mail, MapPin, ArrowUpRight, ExternalLink } from 'lucide-react';
+import { Star, MapPin, Phone, Mail, ArrowUpRight, Award } from 'lucide-react';
 
 export default function Footer() {
-  const { company, footerSection } = websiteData;
+  const { company, navigation, footerSection } = websiteData;
+  const slabSubItems = navigation.find((n) => n.id === 'slabs')?.subItems || [];
 
   const renderStars = (rating) => {
     if (!rating) return null;
@@ -11,161 +12,166 @@ export default function Footer() {
     const hasHalf = rating % 1 !== 0;
 
     return (
-      <div className="footer-stars" aria-label={`Rated ${rating} out of 5 stars`}>
+      <span className="apx-stars-wrap" aria-label={`Rated ${rating} out of 5 stars`}>
         {[...Array(5)].map((_, i) => (
           <Star
             key={i}
-            size={14}
-            className="footer-star-svg"
-            fill={i < fullStars || (i === fullStars && hasHalf) ? '#D4A359' : 'none'}
-            stroke="#D4A359"
+            size={13}
+            fill={i < fullStars || (i === fullStars && hasHalf) ? '#C28B38' : 'none'}
+            stroke="#C28B38"
             style={{ opacity: i < fullStars || (i === fullStars && hasHalf) ? 1 : 0.35 }}
           />
         ))}
-      </div>
+      </span>
     );
   };
 
   return (
-    <footer id="main-site-footer" className="architectural-footer">
-      <div className="section-container">
-        {/* Top Section: Brand Identity, Quick Links, Showroom Info */}
-        <div className="footer-top-grid">
-          {/* Column 1: Original Untouched Company Logo & Story */}
-          <div className="footer-brand-column">
-            <a href="#hero-slideshow-section" className="footer-logo-link" aria-label={company.name}>
+    <footer id="main-site-footer" className="apx-footer">
+      {/* Customer Reviews & Reputation Header Band */}
+      <div className="apx-footer-reviews-band">
+        <div className="apx-container">
+          <div className="apx-reviews-header">
+            <div>
+              <span className="apx-eyebrow">
+                <Award size={13} />
+                <span>Verified Client &amp; Designer Reputation</span>
+              </span>
+              <h3 className="apx-reviews-headline">{footerSection.heading}</h3>
+            </div>
+          </div>
+
+          <div className="apx-reviews-grid">
+            {footerSection.reviews.map((rev, idx) => (
+              <div
+                key={idx}
+                className="apx-review-tile"
+              >
+                <div className="apx-review-top">
+                  <span className="apx-review-name">{rev.name}</span>
+                  <ArrowUpRight size={13} className="apx-review-icon" />
+                </div>
+                <div className="apx-review-bottom">
+                  {rev.stars ? (
+                    <>
+                      {renderStars(rev.stars)}
+                      <span className="apx-review-score">{rev.ratingDisplay}</span>
+                    </>
+                  ) : (
+                    <span className="apx-review-handle">{rev.ratingDisplay}</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main 4-Column Directory */}
+      <div className="apx-container apx-footer-main">
+        <div className="apx-footer-grid">
+          {/* Column 1: Untouched Company Logo + Brand Overview */}
+          <div className="apx-footer-col apx-footer-brand">
+            <a href="#hero-slideshow-section" className="apx-footer-logo-link">
               <img
                 src={company.footerLogo}
                 alt={company.name}
-                className="footer-original-logo"
+                className="apx-footer-logo"
                 onError={(e) => {
                   if (company.footerLogoRemote && e.target.src !== company.footerLogoRemote) {
                     e.target.src = company.footerLogoRemote;
                   }
                 }}
               />
-              <div className="footer-brand-lockup">
-                <span className="footer-brand-name">APEX MARBLE INC</span>
-                <span className="footer-brand-tag">SILICON VALLEY STONE GALLERY</span>
+              <div className="apx-footer-brand-text">
+                <span className="apx-footer-title">APEX MARBLE INC</span>
+                <span className="apx-footer-sub">{company.yearsExperience}</span>
               </div>
             </a>
-
-            <p className="footer-brand-desc">
-              Silicon Valley’s premier destination for hand-selected natural stone slabs, marble,
-              quartzite, granite, quartz, porcelain, and custom prefabricated countertops.
+            <p className="apx-footer-about">
+              {company.tagline}. Curating exceptional natural marble, rare quartzite, granite, quartz, and architectural porcelain slabs in San Jose, California.
             </p>
+          </div>
 
-            <div className="footer-contact-cards">
-              <a href={`tel:+1${company.phonePlain}`} className="footer-contact-pill">
-                <Phone size={15} className="footer-contact-icon" />
-                <span>{company.phone}</span>
-              </a>
-              <a href={`mailto:${company.email}`} className="footer-contact-pill">
-                <Mail size={15} className="footer-contact-icon" />
-                <span>{company.email}</span>
-              </a>
-              <a
-                href={company.mapsUrl}
-                className="footer-contact-pill"
-              >
-                <MapPin size={15} className="footer-contact-icon" />
+          {/* Column 2: Showroom Pages (Routes Commented Out) */}
+          <div className="apx-footer-col">
+            <h4 className="apx-footer-col-title">Showroom Pages</h4>
+            <ul className="apx-footer-link-list apx-links-2col">
+              {navigation.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={item.id === 'home' ? '#hero-slideshow-section' : '#'}
+                    /* href={item.href} — route navigation commented out */
+                    onClick={(e) => {
+                      if (item.id !== 'home') e.preventDefault();
+                      if (item.id === 'about') {
+                        const el = document.getElementById('about-experience-section');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      } else if (item.id === 'slabs' || item.id === 'gallery') {
+                        const el = document.getElementById('materials-showcase-section');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Slab Varieties */}
+          <div className="apx-footer-col">
+            <h4 className="apx-footer-col-title">Slab Collections</h4>
+            <ul className="apx-footer-link-list">
+              {slabSubItems.map((sub, idx) => (
+                <li key={idx}>
+                  <a
+                    href="#materials-showcase-section"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const el = document.getElementById('materials-showcase-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    {sub.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Showroom Location & Direct Contact */}
+          <div className="apx-footer-col">
+            <h4 className="apx-footer-col-title">San Jose Showroom</h4>
+            <ul className="apx-footer-contact">
+              <li>
+                <MapPin size={15} />
                 <span>{company.address}</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Column 2: Stone Collections */}
-          <div className="footer-nav-column">
-            <h3 className="footer-col-heading">Stone Slabs</h3>
-            <ul className="footer-links-list">
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/quartzite-slabs" */}>Quartzite Slabs</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/marble-slabs" */}>Marble Slabs</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/granite-slabs" */}>Granite Slabs</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/quartz-slabs" */}>Quartz Slabs</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/porcelain-slabs" */}>Porcelain Slabs</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/dekton-slabs" */}>Dekton Slabs</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/promotional-slabs" */}>Promotional Slabs</a></li>
+              </li>
+              <li>
+                <Phone size={15} />
+                <a href={`tel:+1${company.phonePlain}`}>{company.phone}</a>
+              </li>
+              <li>
+                <Mail size={15} />
+                <a href={`mailto:${company.email}`}>{company.email}</a>
+              </li>
             </ul>
-          </div>
 
-          {/* Column 3: Architectural Surfaces & Links */}
-          <div className="footer-nav-column">
-            <h3 className="footer-col-heading">Surfaces &amp; Showroom</h3>
-            <ul className="footer-links-list">
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/countertops" */}>Custom Countertops</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/pre-fab" */}>Pre-Fab Countertops</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/tiles" */}>Luxury Tiles</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/flooring" */}>Architectural Flooring</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/showerpanels" */}>Shower Panels</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/gallery" */}>Project Gallery</a></li>
-              <li><a href="#" onClick={(e) => e.preventDefault() /* href="https://www.apexmarbleinc.com/about" */}>About Apex Marble</a></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Showroom Visit CTA */}
-          <div className="footer-cta-column">
-            <div className="footer-showroom-card">
-              <span className="showroom-card-kicker">SAN JOSE WAREHOUSE</span>
-              <h4>Hand-Select Your Slab in Person</h4>
-              <p>
-                Walk our full-slab indoor warehouse with our stone specialists to find the exact
-                veining and finish for your project.
-              </p>
-              <a
-                href={company.quoteUrl}
-                className="footer-quote-btn"
-              >
-                <span>Request Project Estimate</span>
-                <ArrowUpRight size={15} />
-              </a>
-            </div>
+            <a
+              href={`tel:+1${company.phonePlain}`}
+              className="apx-footer-cta-btn"
+            >
+              <span>Schedule Showroom Visit</span>
+              <ArrowUpRight size={14} />
+            </a>
           </div>
         </div>
 
-        {/* Middle Section: Customer Reviews & Social Channels */}
-        <div className="footer-reviews-band" id="apx-footer-reviews">
-          <div className="reviews-band-header">
-            <h3>{footerSection.heading}</h3>
-            <p>Verified feedback from Silicon Valley homeowners, designers, and contractors</p>
-          </div>
-
-          <div className="reviews-cards-row">
-            {footerSection.reviews.map((rev, idx) => (
-              <a
-                key={idx}
-                href={rev.href}
-                className="review-badge-card"
-              >
-                <div className="review-card-top">
-                  <span className="review-platform-name">{rev.name}</span>
-                  <ExternalLink size={13} className="review-ext-icon" />
-                </div>
-
-                {rev.stars ? (
-                  <div className="review-rating-block">
-                    <span className="review-score-num">{rev.ratingDisplay}</span>
-                    {renderStars(rev.stars)}
-                  </div>
-                ) : (
-                  <div className="review-rating-block">
-                    <span className="review-handle-text">{rev.ratingDisplay}</span>
-                  </div>
-                )}
-
-                <span className="review-action-link">
-                  Visit {rev.actionText}
-                </span>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom Copyright Bar */}
-        <div className="footer-bottom-bar">
-          <p>{company.copyright}. All rights reserved.</p>
-          <p className="footer-bottom-tagline">
-            {company.address} • {company.phone}
-          </p>
+        <div className="apx-footer-bottom-row">
+          <p>{company.copyright}. All Rights Reserved.</p>
+          <p>Silicon Valley’s Trusted Natural Stone &amp; Countertop Showroom</p>
         </div>
       </div>
     </footer>

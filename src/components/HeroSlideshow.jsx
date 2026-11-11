@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { websiteData } from '../data/websiteData';
-import { ChevronLeft, ChevronRight, ArrowUpRight, Compass, Layers, Award } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowUpRight, Compass, ShieldCheck } from 'lucide-react';
 
 export default function HeroSlideshow() {
-  const slides = websiteData.heroSlides;
-  const { company } = websiteData;
-
+  const { heroSlides, company } = websiteData;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef(null);
 
-  const totalSlides = slides.length;
+  const totalSlides = heroSlides.length;
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
@@ -20,181 +18,118 @@ export default function HeroSlideshow() {
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
-  const goToSlide = (idx) => {
-    setCurrentIndex(idx);
-  };
-
   useEffect(() => {
     if (!isPaused) {
       timerRef.current = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % totalSlides);
-      }, 5000);
+      }, 5200);
     }
     return () => clearInterval(timerRef.current);
   }, [currentIndex, isPaused, totalSlides]);
 
-  const currentSlide = slides[currentIndex];
+  const currentSlide = heroSlides[currentIndex];
+  const formattedIndex = String(currentIndex + 1).padStart(2, '0');
+  const formattedTotal = String(totalSlides).padStart(2, '0');
 
   return (
     <section
       id="hero-slideshow-section"
-      className="hero-architectural-section"
+      className="apx-hero-section"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="hero-stage-wrapper">
-        {/* Background Slides */}
-        <div className="hero-slides-backdrop">
-          {slides.map((slide, idx) => (
-            <div
-              key={slide.id}
-              className={`hero-slide-frame ${idx === currentIndex ? 'is-active' : ''}`}
-              aria-hidden={idx !== currentIndex}
-            >
-              <img
-                src={slide.url}
-                alt={slide.alt || slide.title}
-                className="hero-slide-img"
-                loading={idx === 0 ? 'eager' : 'lazy'}
-                onError={(e) => {
-                  if (slide.remoteUrl && e.target.src !== slide.remoteUrl) {
-                    e.target.src = slide.remoteUrl;
-                  }
+      <div className="apx-hero-stage">
+        {/* Architectural Background Slides */}
+        {heroSlides.map((slide, idx) => (
+          <div
+            key={slide.id}
+            className={`apx-hero-slide ${idx === currentIndex ? 'is-active' : ''}`}
+            aria-hidden={idx !== currentIndex}
+          >
+            <img
+              src={slide.url}
+              alt={slide.alt || slide.title}
+              className="apx-hero-img"
+              loading={idx === 0 ? 'eager' : 'lazy'}
+              onError={(e) => {
+                if (slide.remoteUrl && e.target.src !== slide.remoteUrl) {
+                  e.target.src = slide.remoteUrl;
+                }
+              }}
+            />
+            {/* Soft Warm Charcoal Scrim (Zero pure black, Zero blue/green) */}
+            <div className="apx-hero-scrim" />
+          </div>
+        ))}
+
+        {/* Centered / Asymmetric Architectural Editorial Content Card */}
+        <div className="apx-container apx-hero-content-wrap">
+          <div className="apx-hero-card">
+            <div className="apx-hero-kicker-row">
+              <span className="apx-hero-count">
+                <strong>{formattedIndex}</strong> / {formattedTotal}
+              </span>
+              <span className="apx-hero-kicker-line" aria-hidden="true" />
+              <span className="apx-hero-badge">
+                <ShieldCheck size={13} />
+                <span>{company.yearsExperience} • San Jose Slab Gallery</span>
+              </span>
+            </div>
+
+            <h1 className="apx-hero-heading">{currentSlide.title}</h1>
+            <p className="apx-hero-lead">{currentSlide.subtitle}</p>
+
+            <div className="apx-hero-cta-row">
+              <a href="#materials-showcase-section" className="apx-btn-primary">
+                <span>Explore Stone Collections</span>
+                <Compass size={15} />
+              </a>
+              <a
+                href="#main-site-footer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById('main-site-footer');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
+                className="apx-btn-secondary"
+              >
+                <span>Request Custom Quote</span>
+                <ArrowUpRight size={15} />
+              </a>
+            </div>
+          </div>
+
+          {/* Minimalist Slide Navigation Arrows */}
+          <button
+            type="button"
+            className="apx-hero-arrow apx-arrow-prev"
+            onClick={prevSlide}
+            aria-label="Previous Stone Slide"
+          >
+            <ChevronLeft size={24} strokeWidth={1.75} />
+          </button>
+          <button
+            type="button"
+            className="apx-hero-arrow apx-arrow-next"
+            onClick={nextSlide}
+            aria-label="Next Stone Slide"
+          >
+            <ChevronRight size={24} strokeWidth={1.75} />
+          </button>
+
+          {/* Interactive Bottom Indicators */}
+          <div className="apx-hero-dots-row" role="tablist" aria-label="Slideshow Navigation">
+            {heroSlides.map((s, idx) => (
+              <button
+                key={s.id}
+                type="button"
+                role="tab"
+                aria-selected={idx === currentIndex}
+                aria-label={`Slide ${idx + 1}: ${s.title}`}
+                className={`apx-hero-dot ${idx === currentIndex ? 'is-active' : ''}`}
+                onClick={() => setCurrentIndex(idx)}
               />
-              <div className="hero-warm-scrim" />
-            </div>
-          ))}
-        </div>
-
-        {/* Main Architectural Editorial Overlay */}
-        <div className="hero-editorial-container">
-          <div className="hero-editorial-grid">
-            <div className="hero-copy-block">
-              <div className="hero-kicker-pill">
-                <span className="kicker-dot" />
-                <span>SILICON VALLEY’S PREMIER NATURAL STONE GALLERY</span>
-              </div>
-
-              <h1 className="hero-display-title">
-                {currentSlide.title}
-              </h1>
-
-              <p className="hero-display-subtitle">
-                {currentSlide.subtitle}. Hand-selected marble, quartzite, granite, quartz, and
-                architectural porcelain slabs imported directly from the world’s finest quarries.
-              </p>
-
-              <div className="hero-cta-group">
-                <a
-                  href="#materials-showcase-section"
-                  className="btn-stone-primary"
-                >
-                  <span>Explore Slab Collection</span>
-                  <ArrowUpRight size={17} />
-                </a>
-                <a
-                  href={company.quoteUrl}
-                  className="btn-stone-outline"
-                >
-                  <span>Schedule Showroom Visit</span>
-                </a>
-              </div>
-
-              {/* Architectural Pillar Highlights */}
-              <div className="hero-trust-strip">
-                <div className="trust-pillar">
-                  <Award size={18} className="trust-pillar-icon" />
-                  <div>
-                    <strong>18+ Years</strong>
-                    <span>Bay Area Excellence</span>
-                  </div>
-                </div>
-                <div className="trust-pillar">
-                  <Layers size={18} className="trust-pillar-icon" />
-                  <div>
-                    <strong>250+ Varieties</strong>
-                    <span>Full Slabs In Stock</span>
-                  </div>
-                </div>
-                <div className="trust-pillar">
-                  <Compass size={18} className="trust-pillar-icon" />
-                  <div>
-                    <strong>Direct Import</strong>
-                    <span>Premier World Quarries</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Interactive Slide Preview Card & Controls */}
-            <div className="hero-gallery-controller">
-              <div className="controller-glass-card">
-                <div className="controller-top-row">
-                  <span className="controller-label">FEATURED SURFACE</span>
-                  <span className="controller-counter">
-                    {String(currentIndex + 1).padStart(2, '0')} / {String(totalSlides).padStart(2, '0')}
-                  </span>
-                </div>
-
-                <div className="controller-active-info">
-                  <h2>{currentSlide.title}</h2>
-                  <p>{currentSlide.subtitle}</p>
-                </div>
-
-                {/* Filmstrip Thumbnails */}
-                <div className="controller-thumbs-row" role="tablist" aria-label="Slide Previews">
-                  {slides.map((s, idx) => (
-                    <button
-                      key={s.id}
-                      type="button"
-                      role="tab"
-                      aria-selected={idx === currentIndex}
-                      aria-label={`View slide ${idx + 1}: ${s.title}`}
-                      className={`hero-thumb-btn ${idx === currentIndex ? 'is-selected' : ''}`}
-                      onClick={() => goToSlide(idx)}
-                    >
-                      <img
-                        src={s.url}
-                        alt={s.title}
-                        onError={(e) => {
-                          if (s.remoteUrl && e.target.src !== s.remoteUrl) {
-                            e.target.src = s.remoteUrl;
-                          }
-                        }}
-                      />
-                    </button>
-                  ))}
-                </div>
-
-                <div className="controller-nav-bar">
-                  <div className="controller-progress-track">
-                    <div
-                      className="controller-progress-fill"
-                      style={{ inlineSize: `${((currentIndex + 1) / totalSlides) * 100}%` }}
-                    />
-                  </div>
-                  <div className="controller-arrows">
-                    <button
-                      type="button"
-                      onClick={prevSlide}
-                      className="controller-arrow-btn"
-                      aria-label="Previous Slide"
-                    >
-                      <ChevronLeft size={18} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={nextSlide}
-                      className="controller-arrow-btn"
-                      aria-label="Next Slide"
-                    >
-                      <ChevronRight size={18} />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

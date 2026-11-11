@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { websiteData } from '../data/websiteData';
-import { ChevronLeft, ChevronRight, ShieldCheck, ExternalLink } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
 
 export default function BrandPartners() {
   const { partnersSection } = websiteData;
@@ -9,78 +9,74 @@ export default function BrandPartners() {
   const trackRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
 
-  const moveManual = (direction) => {
+  const scrollPartners = (direction) => {
     if (trackRef.current) {
-      const moveAmount = 260 * direction;
-      trackRef.current.scrollBy({ left: moveAmount, behavior: 'smooth' });
+      trackRef.current.scrollBy({ left: 280 * direction, behavior: 'smooth' });
     }
   };
 
   return (
-    <section id="brand-partners-section" className="partners-architectural-section">
-      <div className="section-container">
-        <div className="section-editorial-header">
-          <div className="editorial-kicker">
-            <ShieldCheck size={14} />
-            <span>AUTHORIZED &amp; CERTIFIED DISTRIBUTOR</span>
+    <section id="brand-partners-section" className="apx-partners-section">
+      <div className="apx-container">
+        <div className="apx-partners-header">
+          <div className="apx-partners-titles">
+            <span className="apx-eyebrow">
+              <ShieldCheck size={13} />
+              <span>{partnersSection.altHeading}</span>
+            </span>
+            <h2 className="apx-section-title">{partnersSection.heading}</h2>
+            <p className="apx-section-sub">{partnersSection.subheading}</p>
           </div>
-          <h2 className="editorial-heading">{partnersSection.heading}</h2>
-          <p className="editorial-subheading">{partnersSection.subheading}</p>
+
+          <div className="apx-partners-nav-btns">
+            <button
+              type="button"
+              className="apx-partner-ctrl"
+              onClick={() => scrollPartners(-1)}
+              aria-label="Previous Partner Brands"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              type="button"
+              className="apx-partner-ctrl"
+              onClick={() => scrollPartners(1)}
+              aria-label="Next Partner Brands"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </div>
 
-        {/* Interactive Architectural Marquee */}
-        <div className="partners-marquee-shell">
-          <button
-            type="button"
-            className="marquee-arrow-btn"
-            onClick={() => moveManual(-1)}
-            aria-label="Previous Partners"
-          >
-            <ChevronLeft size={22} />
-          </button>
-
-          <div
-            className={`partners-marquee-viewport ${isPaused ? 'is-paused' : ''}`}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            <div className="partners-marquee-track" ref={trackRef}>
-              {[...partners, ...partners].map((partner, idx) => (
-                <a
-                  key={idx}
-                  href={partner.href}
-                  className="partner-stone-tile"
-                >
-                  <div className="partner-logo-stage">
-                    <img
-                      src={partner.image}
-                      alt={partner.name}
-                      className="partner-brand-img"
-                      loading="lazy"
-                      onError={(e) => {
-                        if (partner.remoteImage && e.target.src !== partner.remoteImage) {
-                          e.target.src = partner.remoteImage;
-                        }
-                      }}
-                    />
-                  </div>
-                  <div className="partner-tile-meta">
-                    <span className="partner-tile-name">{partner.name}</span>
-                    <ExternalLink size={12} className="partner-ext-icon" />
-                  </div>
-                </a>
-              ))}
-            </div>
+        {/* Continuous Marquee */}
+        <div
+          className={`apx-marquee-container ${isPaused ? 'is-paused' : ''}`}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="apx-marquee-track" ref={trackRef}>
+            {[...partners, ...partners].map((partner, idx) => (
+              <div
+                key={idx}
+                className="apx-partner-card"
+              >
+                <div className="apx-partner-img-wrap">
+                  <img
+                    src={partner.image}
+                    alt={partner.name}
+                    className="apx-partner-logo"
+                    loading="lazy"
+                    onError={(e) => {
+                      if (partner.remoteImage && e.target.src !== partner.remoteImage) {
+                        e.target.src = partner.remoteImage;
+                      }
+                    }}
+                  />
+                </div>
+                <span className="apx-partner-title">{partner.name}</span>
+              </div>
+            ))}
           </div>
-
-          <button
-            type="button"
-            className="marquee-arrow-btn"
-            onClick={() => moveManual(1)}
-            aria-label="Next Partners"
-          >
-            <ChevronRight size={22} />
-          </button>
         </div>
       </div>
     </section>

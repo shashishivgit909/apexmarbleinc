@@ -1,65 +1,62 @@
 import React from 'react';
 import { websiteData } from '../data/websiteData';
-import { Gem, ShieldCheck, Sparkles, ArrowUpRight } from 'lucide-react';
+import { Sparkles, ArrowUpRight, Check } from 'lucide-react';
 
 export default function TimelessElegance() {
   const { timelessSection } = websiteData;
 
+  const highlights = [
+    'Hand-Selected Marble & Exotic Quartzite',
+    'High-Performance Granite & Quartz',
+    'Large-Format Porcelain & Dekton Cladding',
+    'Precision Custom Countertops & Pre-Fab Surfaces'
+  ];
+
   return (
-    <section id="timeless-elegance-section" className="timeless-architectural-section">
-      {/* Subtle Architectural Backdrop */}
+    <section id="timeless-elegance-section" className="apx-timeless-section">
       <div
-        className="timeless-backdrop-media"
+        className="apx-timeless-backdrop"
         style={{ backgroundImage: `url(${timelessSection.backgroundImage})` }}
       >
-        <div className="timeless-warm-overlay" />
+        <div className="apx-timeless-scrim" />
       </div>
 
-      <div className="section-container timeless-relative-z">
-        <div className="timeless-editorial-card">
-          <div className="timeless-card-left">
-            <div className="timeless-badge">
-              <Gem size={14} />
-              <span>ENDURING ARCHITECTURAL CRAFTSMANSHIP</span>
-            </div>
+      <div className="apx-container apx-timeless-inner">
+        <div className="apx-timeless-card">
+          <span className="apx-eyebrow">
+            <Sparkles size={13} />
+            <span>{timelessSection.subheading}</span>
+          </span>
 
-            <h2 className="timeless-heading">{timelessSection.heading}</h2>
+          <h2 className="apx-section-title apx-timeless-title">
+            {timelessSection.heading}
+          </h2>
 
-            <p className="timeless-subtitle">{timelessSection.subheading}</p>
+          <p className="apx-timeless-body">{timelessSection.paragraph1}</p>
+          <p className="apx-timeless-body">{timelessSection.paragraph2}</p>
 
-            <div className="timeless-highlights">
-              <div className="timeless-highlight-item">
-                <div className="highlight-icon-box">
-                  <ShieldCheck size={18} />
-                </div>
-                <div>
-                  <strong>Investment-Grade Longevity</strong>
-                  <p>Surfaces engineered by nature to resist heat, wear, and generations of daily use.</p>
-                </div>
-              </div>
+          <ul className="apx-timeless-list">
+            {highlights.map((item, idx) => (
+              <li key={idx} className="apx-timeless-item">
+                <Check size={14} className="apx-check-icon" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
 
-              <div className="timeless-highlight-item">
-                <div className="highlight-icon-box">
-                  <Sparkles size={18} />
-                </div>
-                <div>
-                  <strong>Bespoke Architectural Presence</strong>
-                  <p>One-of-a-kind mineral veining that elevates kitchens, baths, and commercial spaces.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="timeless-card-right">
-            <p className="timeless-prose-lead">{timelessSection.paragraph1}</p>
-            <p className="timeless-prose-body">{timelessSection.paragraph2}</p>
-
-            <div className="timeless-cta-row">
-              <a href={timelessSection.ctaHref} className="btn-stone-gold">
-                <span>{timelessSection.ctaText} for a Private Consultation</span>
-                <ArrowUpRight size={17} />
-              </a>
-            </div>
+          <div className="apx-timeless-action">
+            <a
+              href="#main-site-footer"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById('main-site-footer');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="apx-btn-primary"
+            >
+              <span>{timelessSection.ctaText}</span>
+              <ArrowUpRight size={15} />
+            </a>
           </div>
         </div>
       </div>
