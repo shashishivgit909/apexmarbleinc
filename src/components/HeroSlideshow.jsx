@@ -98,6 +98,7 @@ export default function HeroSlideshow() {
               </a>
             </div>
           </div>
+          
 
           {/* Minimalist Slide Navigation Arrows */}
           <button

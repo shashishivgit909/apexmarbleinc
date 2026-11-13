@@ -307,7 +307,7 @@ export const websiteData = {
     ribbon: "18 Years Experience",
     welcomeText: "WELCOME TO APEX MARBLE",
     headline: "Silicon Valley’s trusted name\nin natural stone",
-    paragraph: "Apex Marble offers a curated collection of premium slabs sourced from the world’s most prestigious quarries, from timeless marble to resilient quartzite. Our experts hand-select every piece, rigorously evaluating color, movement, and structural integrity to ensure only the finest materials grace your home. Our materials are chosen to complement both contemporary and timeless interior styles, ensuring they blend seamlessly into your vision. Our expert team will help you choose the perfect material to complement your project’s design, function, and budget.",
+    paragraph: "Apex Marble offers premium, hand-selected marble and quartzite slabs sourced from prestigious quarries worldwide. Each piece is carefully inspected for quality, beauty, and durability to complement your design, lifestyle, and budget.",
     trustedPill: "Trusted by Silicon Valley Homeowners",
     ctaText: "Learn More",
     ctaHref: "#timeless-elegance-section",

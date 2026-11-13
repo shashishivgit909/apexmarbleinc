@@ -18,11 +18,11 @@ export default function App() {
         {/* Section 1: Full-Bleed Architectural Hero Slideshow (11 Slides) */}
         <HeroSlideshow />
 
-        {/* Section 2: Editorial Showroom Heritage & 18 Years Experience */}
-        <AboutSection />
-
-        {/* Section 3: Curated Stone & Slab Specification Gallery */}
+        {/* Section 2: Premium Stone Materials Showcase */}
         <MaterialsShowcase />
+
+        {/* Section 3: Editorial Showroom Heritage & 18 Years Experience */}
+        <AboutSection />
 
         {/* Section 4: Timeless Elegance Architectural Showcase */}
         <TimelessElegance />
