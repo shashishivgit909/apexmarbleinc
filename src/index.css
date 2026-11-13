@@ -1137,7 +1137,7 @@ ul, ol {
 
 .apx-timeless-section {
   position: relative;
-  padding-block: clamp(5rem, 8vw, 8rem);
+  padding-block: clamp(4.25rem, 6.5vw, 6.5rem);
   background-color: var(--apx-charcoal-900);
   overflow: hidden;
 }
@@ -1166,10 +1166,10 @@ ul, ol {
 }
 
 .apx-timeless-card {
-  max-inline-size: 42rem;
+  max-inline-size: 39rem;
   background-color: rgba(255, 255, 255, 0.98);
   border: 1px solid var(--apx-stone-300);
-  padding: clamp(2rem, 4vw, 3.75rem);
+  padding: clamp(1.85rem, 3.5vw, 3.25rem);
 }
 
 .apx-timeless-title {

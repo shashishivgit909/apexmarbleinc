@@ -5,11 +5,11 @@ import { Sparkles, ArrowUpRight, Check } from 'lucide-react';
 export default function TimelessElegance() {
   const { timelessSection } = websiteData;
 
-  const highlights = [
-    'Hand-Selected Marble & Exotic Quartzite',
-    'High-Performance Granite & Quartz',
-    'Large-Format Porcelain & Dekton Cladding',
-    'Precision Custom Countertops & Pre-Fab Surfaces'
+  const highlights = timelessSection.highlights || [
+    'Direct Quarry Selection',
+    'Heat & Scratch Resistance',
+    'Custom Precision Fabrication',
+    'San Jose Showroom Stock'
   ];
 
   return (
@@ -32,8 +32,9 @@ export default function TimelessElegance() {
             {timelessSection.heading}
           </h2>
 
-          <p className="apx-timeless-body">{timelessSection.paragraph1}</p>
-          <p className="apx-timeless-body">{timelessSection.paragraph2}</p>
+          <p className="apx-timeless-body">
+            {timelessSection.description}
+          </p>
 
           <ul className="apx-timeless-list">
             {highlights.map((item, idx) => (

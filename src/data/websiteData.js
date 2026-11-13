@@ -68,8 +68,8 @@ export const websiteData = {
     {
       id: 1,
       url: "/images/slide-1.png",
-      remoteUrl: "https://assets.zyrosite.com/A1az8Ze6q1IGrDxp/3cdf432c-fa85-4e69-b69a-8a62223d387c-TK5mvQ1XuO3tf2z0.png",
-      alt: "Apex Marble Slab 1",
+      remoteUrl: "/images/slide-1.png", // Replaced clearance sale graphic with book-matched luxury Calacatta marble gallery
+      alt: "Apex Marble Book-Matched Calacatta Gold Slab Display",
       title: "Exquisite Natural Stone",
       subtitle: "Hand-selected slabs directly from premier world quarries"
     },
@@ -223,8 +223,13 @@ export const websiteData = {
   timelessSection: {
     heading: "Embrace Timeless Elegance",
     subheading: "Luxury Surfaces That Stand The Test Of Time",
-    paragraph1: "As modern living calls for more stylish and durable surfaces, the demand for premium natural stone has never been greater.",
-    paragraph2: "Our solutions not only enhance the aesthetic and value of your space but also provide long-lasting strength and reliability. By choosing marble, granite, quartz, quartzite, tiles, and prefab countertops from Apex Marble, you protect your investment with materials that stand the test of time and transform your home or business into a showcase of quality and sophistication.",
+    description: "Premium natural and engineered stone curated for enduring strength, architectural elegance, and lasting value.",
+    highlights: [
+      "Direct Quarry Selection",
+      "Heat & Scratch Resistance",
+      "Custom Precision Fabrication",
+      "San Jose Showroom Stock"
+    ],
     ctaText: "Contact us",
     ctaHref: "#main-site-footer",
     backgroundImage: "/images/bg-timeless.jpg",

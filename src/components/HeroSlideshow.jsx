@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { websiteData } from '../data/websiteData';
-import { ChevronLeft, ChevronRight, ArrowUpRight, Compass, ShieldCheck } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function HeroSlideshow() {
-  const { heroSlides, company } = websiteData;
+  const { heroSlides } = websiteData;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef(null);
@@ -26,10 +26,6 @@ export default function HeroSlideshow() {
     }
     return () => clearInterval(timerRef.current);
   }, [currentIndex, isPaused, totalSlides]);
-
-  const currentSlide = heroSlides[currentIndex];
-  const formattedIndex = String(currentIndex + 1).padStart(2, '0');
-  const formattedTotal = String(totalSlides).padStart(2, '0');
 
   return (
     <section
@@ -62,9 +58,8 @@ export default function HeroSlideshow() {
           </div>
         ))}
 
-        {/* Centered / Asymmetric Architectural Editorial Content Card */}
+        {/* Minimalist Slide Navigation & Indicators */}
         <div className="apx-container apx-hero-content-wrap">
-        
           {/* Minimalist Slide Navigation Arrows */}
           <button
             type="button"
