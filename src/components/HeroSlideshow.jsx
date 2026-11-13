@@ -64,42 +64,7 @@ export default function HeroSlideshow() {
 
         {/* Centered / Asymmetric Architectural Editorial Content Card */}
         <div className="apx-container apx-hero-content-wrap">
-          <div className="apx-hero-card">
-            <div className="apx-hero-kicker-row">
-              <span className="apx-hero-count">
-                <strong>{formattedIndex}</strong> / {formattedTotal}
-              </span>
-              <span className="apx-hero-kicker-line" aria-hidden="true" />
-              <span className="apx-hero-badge">
-                <ShieldCheck size={13} />
-                <span>{company.yearsExperience} • San Jose Slab Gallery</span>
-              </span>
-            </div>
-
-            <h1 className="apx-hero-heading">{currentSlide.title}</h1>
-            <p className="apx-hero-lead">{currentSlide.subtitle}</p>
-
-            <div className="apx-hero-cta-row">
-              <a href="#materials-showcase-section" className="apx-btn-primary">
-                <span>Explore Stone Collections</span>
-                <Compass size={15} />
-              </a>
-              <a
-                href="#main-site-footer"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const el = document.getElementById('main-site-footer');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="apx-btn-secondary"
-              >
-                <span>Request Custom Quote</span>
-                <ArrowUpRight size={15} />
-              </a>
-            </div>
-          </div>
-          
-
+        
           {/* Minimalist Slide Navigation Arrows */}
           <button
             type="button"
