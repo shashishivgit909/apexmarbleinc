@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { websiteData } from '../data/websiteData';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+const AUTO_SLIDE_DELAY_MS = 3800;
 
 export default function HeroSlideshow() {
   const { heroSlides } = websiteData;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const timerRef = useRef(null);
 
   const totalSlides = heroSlides.length;
 
@@ -19,20 +19,19 @@ export default function HeroSlideshow() {
   };
 
   useEffect(() => {
-    if (!isPaused) {
-      timerRef.current = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % totalSlides);
-      }, 5200);
-    }
-    return () => clearInterval(timerRef.current);
-  }, [currentIndex, isPaused, totalSlides]);
+    if (totalSlides <= 1) return undefined;
+
+    const timerId = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % totalSlides);
+    }, AUTO_SLIDE_DELAY_MS);
+
+    return () => clearInterval(timerId);
+  }, [currentIndex, totalSlides]);
 
   return (
     <section
       id="hero-slideshow-section"
       className="apx-hero-section"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       <div className="apx-hero-stage">
         {/* Architectural Background Slides */}
@@ -58,9 +57,8 @@ export default function HeroSlideshow() {
           </div>
         ))}
 
-        {/* Minimalist Slide Navigation & Indicators */}
+        {/* Minimalist Slide Navigation Arrows */}
         <div className="apx-container apx-hero-content-wrap">
-          {/* Minimalist Slide Navigation Arrows */}
           <button
             type="button"
             className="apx-hero-arrow apx-arrow-prev"
@@ -77,21 +75,6 @@ export default function HeroSlideshow() {
           >
             <ChevronRight size={24} strokeWidth={1.75} />
           </button>
-
-          {/* Interactive Bottom Indicators */}
-          <div className="apx-hero-dots-row" role="tablist" aria-label="Slideshow Navigation">
-            {heroSlides.map((s, idx) => (
-              <button
-                key={s.id}
-                type="button"
-                role="tab"
-                aria-selected={idx === currentIndex}
-                aria-label={`Slide ${idx + 1}: ${s.title}`}
-                className={`apx-hero-dot ${idx === currentIndex ? 'is-active' : ''}`}
-                onClick={() => setCurrentIndex(idx)}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>

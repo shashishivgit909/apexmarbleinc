@@ -742,27 +742,6 @@ ul, ol {
   inset-inline-end: 1.5rem;
 }
 
-/* Dots */
-.apx-hero-dots-row {
-  position: absolute;
-  inset-block-end: -2.5rem;
-  inset-inline-start: 0;
-  display: flex;
-  gap: 0.5rem;
-}
-
-.apx-hero-dot {
-  inline-size: 2.25rem;
-  block-size: 2px;
-  background-color: rgba(255, 255, 255, 0.35);
-  transition: all var(--ease-smooth);
-}
-
-.apx-hero-dot.is-active {
-  background-color: var(--apx-bronze-light);
-  inline-size: 3.25rem;
-}
-
 /* ==========================================================================
    3. EDITORIAL SHOWROOM & ABOUT SECTION
    ========================================================================== */
