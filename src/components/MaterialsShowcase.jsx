@@ -13,7 +13,7 @@ export default function MaterialsShowcase() {
   return (
     <section id="materials-showcase-section" className="apx-materials-section">
       <div className="apx-container">
-        {/* Section Header with Category Tabs */}
+        {/* Section Header: Split Executive Layout with Category Tabs */}
         <div className="apx-materials-header">
           <div className="apx-materials-titles">
             <span className="apx-eyebrow">
@@ -24,7 +24,7 @@ export default function MaterialsShowcase() {
             <p className="apx-section-sub">{materialsSection.subheading}</p>
           </div>
 
-          {/* Minimalist Filter Bar */}
+          {/* Segmented Architectural Filter Bar */}
           <div className="apx-filter-group" role="tablist" aria-label="Filter Stone Categories">
             <button
               type="button"

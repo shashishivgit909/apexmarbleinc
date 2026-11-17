@@ -17,8 +17,8 @@ export default function Footer() {
           <Star
             key={i}
             size={13}
-            fill={i < fullStars || (i === fullStars && hasHalf) ? '#C28B38' : 'none'}
-            stroke="#C28B38"
+            fill={i < fullStars || (i === fullStars && hasHalf) ? '#4A6B5D' : 'none'}
+            stroke="#4A6B5D"
             style={{ opacity: i < fullStars || (i === fullStars && hasHalf) ? 1 : 0.35 }}
           />
         ))}
