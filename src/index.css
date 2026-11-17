@@ -1,34 +1,35 @@
 /* ==========================================================================
-   APEX MARBLE INC – ARCHITECTURAL SAGE & ALABASTER DESIGN SYSTEM
-   Inspiration: Modern Botanical Stone Showrooms & European Architectural Ateliers
-   Aesthetic: Crisp Alabaster Mist, Cool Mineral Limestone & Eucalyptus Sage
-   Palette: Pure Gallery White (#FFFFFF), Alabaster Mist (#F4F7F5, #EBF1EE),
-            Deep Botanical Slate (#1E2D27, #2E4239), Architectural Sage (#4A6B5D),
-            and Muted Mineral Sage (#465950, #687D73).
+   APEX MARBLE INC – WARM CASHMERE GREIGE & SANDSTONE DESIGN SYSTEM
+   Inspiration: Luxury Natural Stone Ateliers & Architectural Travertine Galleries
+   Aesthetic: Warm Ivory Pearl, Cashmere Limestone & Brushed Taupe-Sandstone
+   Palette: Pure Gallery White (#FFFFFF), Warm Cashmere (#FAF8F5, #F3EFE9),
+            Warm Espresso-Umber (#2E2925, #423B35), Brushed Taupe-Brass (#8C7355),
+            and Muted Sandstone Taupe (#5C534A, #7D7267).
+   STRICTLY FREE OF BLUE, TEAL, RED, AND DARK THEMES (All colors strictly R > G > B).
    Company logo 100% preserved and untouched in color, proportions, and design.
    ========================================================================== */
 
 :root {
-  /* Crisp Alabaster & Cool Mineral Sage-Limestone Surfaces */
+  /* Warm Ivory Pearl & Cashmere Travertine Surfaces (Zero Blue/Teal) */
   --apx-white: #FFFFFF;
-  --apx-stone-50: #F4F7F5;   /* Crisp Alabaster Mist */
-  --apx-stone-100: #EBF1EE;  /* Soft Eucalyptus Limestone */
-  --apx-stone-200: #DFEAE4;  /* Botanical Mineral Surface */
-  --apx-stone-300: #CBD8D1;  /* Architectural Sage-Grey Hairline Divider */
-  --apx-stone-400: #B0C2B9;  /* Medium Mineral Structural Border */
+  --apx-stone-50: #FAF8F5;   /* Warm Ivory Pearl */
+  --apx-stone-100: #F3EFE9;  /* Soft Cashmere Travertine */
+  --apx-stone-200: #E9E2D8;  /* Warm Sandstone Surface */
+  --apx-stone-300: #DCD3C6;  /* Warm Greige Hairline Divider */
+  --apx-stone-400: #C7BBAE;  /* Medium Architectural Stone Border */
 
-  /* Deep Botanical Slate Typography (High Contrast, Zero Pure Black) */
-  --apx-charcoal-900: #1E2D27; /* Deep Forest-Slate Display Headings */
-  --apx-charcoal-800: #2E4239; /* Elevated Botanical Slate */
-  --apx-charcoal-700: #41584E; /* Soft Mineral Slate */
-  --apx-text-body: #465950;    /* Balanced Slate-Sage Body Text */
-  --apx-text-muted: #687D73;   /* Muted Eucalyptus Secondary Text */
+  /* Warm Espresso-Umber Typography (Zero Blue, Zero Pure Black) */
+  --apx-charcoal-900: #2E2925; /* Warm Espresso-Umber Display Headings */
+  --apx-charcoal-800: #423B35; /* Elevated Umber-Taupe */
+  --apx-charcoal-700: #574E46; /* Soft Mocha-Taupe */
+  --apx-text-body: #5C534A;    /* Balanced Warm Taupe Body Copy */
+  --apx-text-muted: #7D7267;   /* Muted Sandstone Secondary Text */
 
-  /* Architectural Eucalyptus / Sage Accent Palette */
-  --apx-bronze: #4A6B5D;       /* Primary Architectural Sage */
-  --apx-bronze-dark: #385448;  /* Deepened Eucalyptus Hover */
-  --apx-bronze-light: #658A7A; /* Soft Sage Highlight */
-  --apx-bronze-bg: #E6EFEA;    /* Delicate Sage Tint Surface */
+  /* Brushed Warm Taupe-Brass / Sandstone Accent Palette */
+  --apx-bronze: #8C7355;       /* Primary Brushed Taupe-Brass */
+  --apx-bronze-dark: #705B42;  /* Deepened Warm Mocha-Brass Hover */
+  --apx-bronze-light: #A68B6B; /* Soft Cashmere-Sandstone Highlight */
+  --apx-bronze-bg: #F5EFE6;    /* Delicate Warm Cashmere Tint */
 
   /* Typography */
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -169,7 +170,7 @@ ul, ol {
   text-transform: uppercase;
   border: 1px solid var(--apx-bronze);
   border-radius: var(--radius-sm);
-  box-shadow: 0 6px 18px rgba(74, 107, 93, 0.24);
+  box-shadow: 0 6px 18px rgba(140, 115, 85, 0.22);
   transition: all var(--ease-smooth);
 }
 
@@ -178,7 +179,7 @@ ul, ol {
   border-color: var(--apx-bronze-dark);
   color: var(--apx-white);
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(56, 84, 72, 0.3);
+  box-shadow: 0 10px 24px rgba(112, 91, 66, 0.28);
 }
 
 .apx-btn-secondary {
@@ -234,7 +235,7 @@ ul, ol {
   position: sticky;
   inset-block-start: 0;
   z-index: 100;
-  background-color: rgba(244, 247, 245, 0.96);
+  background-color: rgba(250, 248, 245, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-block-start: 3px solid var(--apx-bronze);
@@ -244,7 +245,7 @@ ul, ol {
 
 .apx-header.is-scrolled {
   background-color: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 8px 28px rgba(30, 45, 39, 0.07);
+  box-shadow: 0 8px 28px rgba(66, 59, 53, 0.07);
 }
 
 .apx-header-inner {
@@ -898,7 +899,7 @@ ul, ol {
   color: var(--apx-white);
   background-color: var(--apx-bronze);
   font-weight: 500;
-  box-shadow: 0 4px 12px rgba(74, 107, 93, 0.25);
+  box-shadow: 0 4px 12px rgba(140, 115, 85, 0.25);
 }
 
 /* 3-Column Luxury Slab Grid */
@@ -1512,7 +1513,7 @@ ul, ol {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(74, 107, 93, 0.38);
+  box-shadow: 0 8px 24px rgba(140, 115, 85, 0.38);
   transition: all var(--ease-smooth);
 }
 
