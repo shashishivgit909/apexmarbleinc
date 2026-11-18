@@ -1,35 +1,35 @@
 /* ==========================================================================
-   APEX MARBLE INC – WARM CASHMERE GREIGE & SANDSTONE DESIGN SYSTEM
+   APEX MARBLE INC – ARCHITECTURAL WALNUT BROWN & WARM CASHMERE DESIGN SYSTEM
    Inspiration: Luxury Natural Stone Ateliers & Architectural Travertine Galleries
-   Aesthetic: Warm Ivory Pearl, Cashmere Limestone & Brushed Taupe-Sandstone
+   Aesthetic: Warm Ivory Pearl, Cashmere Limestone & Rich Dark Walnut Brown
    Palette: Pure Gallery White (#FFFFFF), Warm Cashmere (#FAF8F5, #F3EFE9),
-            Warm Espresso-Umber (#2E2925, #423B35), Brushed Taupe-Brass (#8C7355),
-            and Muted Sandstone Taupe (#5C534A, #7D7267).
+            Deep Espresso-Walnut (#261E18, #382D24), Rich Dark Brown (#5C432C),
+            and Warm Coffee-Taupe (#4F4236, #706052).
    STRICTLY FREE OF BLUE, TEAL, RED, AND DARK THEMES (All colors strictly R > G > B).
    Company logo 100% preserved and untouched in color, proportions, and design.
    ========================================================================== */
 
 :root {
-  /* Warm Ivory Pearl & Cashmere Travertine Surfaces (Zero Blue/Teal) */
-  --apx-white: #FFFFFF;
-  --apx-stone-50: #FAF8F5;   /* Warm Ivory Pearl */
-  --apx-stone-100: #F3EFE9;  /* Soft Cashmere Travertine */
-  --apx-stone-200: #E9E2D8;  /* Warm Sandstone Surface */
-  --apx-stone-300: #DCD3C6;  /* Warm Greige Hairline Divider */
-  --apx-stone-400: #C7BBAE;  /* Medium Architectural Stone Border */
+  /* Rich Warm Latte, Cappuccino & Mocha-Travertine Surfaces */
+  --apx-white: #FAF6F0;      /* Warm Parchment Cream (Replaces stark white) */
+  --apx-stone-50: #EFE5DA;   /* Rich Warm Latte Stone */
+  --apx-stone-100: #E4D5C5;  /* Warm Cappuccino Travertine */
+  --apx-stone-200: #D5C2AE;  /* Deep Mocha-Sandstone Surface */
+  --apx-stone-300: #BDA68E;  /* Rich Walnut-Tan Hairline Divider */
+  --apx-stone-400: #9E846B;  /* Medium Architectural Brown Border */
 
-  /* Warm Espresso-Umber Typography (Zero Blue, Zero Pure Black) */
-  --apx-charcoal-900: #2E2925; /* Warm Espresso-Umber Display Headings */
-  --apx-charcoal-800: #423B35; /* Elevated Umber-Taupe */
-  --apx-charcoal-700: #574E46; /* Soft Mocha-Taupe */
-  --apx-text-body: #5C534A;    /* Balanced Warm Taupe Body Copy */
-  --apx-text-muted: #7D7267;   /* Muted Sandstone Secondary Text */
+  /* Deep Roasted Espresso Typography */
+  --apx-charcoal-900: #1E130C; /* Deep Roasted Espresso Display Headings */
+  --apx-charcoal-800: #2E1F14; /* Dark Espresso-Walnut */
+  --apx-charcoal-700: #422E20; /* Rich Coffee-Brown */
+  --apx-text-body: #3B291C;    /* Deep Espresso-Taupe Body Copy */
+  --apx-text-muted: #5C4432;   /* Rich Walnut Secondary Text */
 
-  /* Brushed Warm Taupe-Brass / Sandstone Accent Palette */
-  --apx-bronze: #8C7355;       /* Primary Brushed Taupe-Brass */
-  --apx-bronze-dark: #705B42;  /* Deepened Warm Mocha-Brass Hover */
-  --apx-bronze-light: #A68B6B; /* Soft Cashmere-Sandstone Highlight */
-  --apx-bronze-bg: #F5EFE6;    /* Delicate Warm Cashmere Tint */
+  /* Deep Espresso & Dark Chocolate Brown Accent Palette */
+  --apx-bronze: #3D2614;       /* Primary Deep Espresso / Dark Brown */
+  --apx-bronze-dark: #26160A;  /* Ultra-Dark Roasted Espresso Hover */
+  --apx-bronze-light: #5E3D22; /* Rich Dark Walnut Highlight */
+  --apx-bronze-bg: #E6D6C5;    /* Warm Mocha-Cream Tint */
 
   /* Typography */
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -170,7 +170,7 @@ ul, ol {
   text-transform: uppercase;
   border: 1px solid var(--apx-bronze);
   border-radius: var(--radius-sm);
-  box-shadow: 0 6px 18px rgba(140, 115, 85, 0.22);
+  box-shadow: 0 6px 18px rgba(92, 67, 44, 0.25);
   transition: all var(--ease-smooth);
 }
 
@@ -179,7 +179,7 @@ ul, ol {
   border-color: var(--apx-bronze-dark);
   color: var(--apx-white);
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(112, 91, 66, 0.28);
+  box-shadow: 0 10px 24px rgba(67, 47, 30, 0.32);
 }
 
 .apx-btn-secondary {
@@ -235,17 +235,17 @@ ul, ol {
   position: sticky;
   inset-block-start: 0;
   z-index: 100;
-  background-color: rgba(250, 248, 245, 0.96);
+  background-color: rgba(239, 229, 218, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-block-start: 3px solid var(--apx-bronze);
+  border-block-start: 4px solid var(--apx-bronze);
   border-block-end: 1px solid var(--apx-stone-300);
   transition: padding var(--ease-smooth), box-shadow var(--ease-smooth), background-color var(--ease-smooth);
 }
 
 .apx-header.is-scrolled {
-  background-color: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 8px 28px rgba(66, 59, 53, 0.07);
+  background-color: rgba(244, 235, 225, 0.98);
+  box-shadow: 0 8px 28px rgba(46, 31, 20, 0.12);
 }
 
 .apx-header-inner {
@@ -708,7 +708,7 @@ ul, ol {
 
 .apx-about-section {
   padding-block: clamp(4.5rem, 7vw, 6.5rem);
-  background-color: var(--apx-stone-50);
+  background-color: var(--apx-stone-100);
   border-block-start: 1px solid var(--apx-stone-300);
   border-block-end: 1px solid var(--apx-stone-300);
 }
@@ -849,7 +849,7 @@ ul, ol {
 
 .apx-materials-section {
   padding-block: clamp(4.5rem, 7vw, 6.5rem);
-  background-color: var(--apx-white);
+  background-color: var(--apx-stone-50);
 }
 
 .apx-materials-header {
@@ -899,7 +899,7 @@ ul, ol {
   color: var(--apx-white);
   background-color: var(--apx-bronze);
   font-weight: 500;
-  box-shadow: 0 4px 12px rgba(140, 115, 85, 0.25);
+  box-shadow: 0 4px 12px rgba(92, 67, 44, 0.28);
 }
 
 /* 3-Column Luxury Slab Grid */
@@ -913,11 +913,12 @@ ul, ol {
 .apx-material-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--apx-stone-50);
+  background-color: var(--apx-white);
   border: 1px solid var(--apx-stone-300);
   border-radius: var(--radius-md);
   overflow: hidden;
   padding: 0.65rem;
+  box-shadow: 0 8px 24px rgba(46, 31, 20, 0.06);
   transition: transform var(--ease-smooth), box-shadow var(--ease-smooth), border-color var(--ease-smooth);
 }
 
@@ -1282,12 +1283,12 @@ ul, ol {
    ========================================================================== */
 
 .apx-footer {
-  background-color: var(--apx-stone-100);
+  background-color: var(--apx-stone-200);
   border-block-start: 1px solid var(--apx-stone-300);
 }
 
 .apx-footer-reviews-band {
-  background-color: var(--apx-white);
+  background-color: var(--apx-stone-100);
   border-block-end: 1px solid var(--apx-stone-300);
   padding-block: 3rem;
 }
@@ -1513,7 +1514,7 @@ ul, ol {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(140, 115, 85, 0.38);
+  box-shadow: 0 8px 24px rgba(92, 67, 44, 0.4);
   transition: all var(--ease-smooth);
 }
 
