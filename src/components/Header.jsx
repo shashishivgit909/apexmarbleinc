@@ -89,7 +89,7 @@ export default function Header() {
             />
             <div className="apx-brand-text">
               <span className="apx-brand-title">APEX MARBLE</span>
-              <span className="apx-brand-subtitle">Natural Stone Atelier</span>
+              <span className="apx-brand-subtitle">Natural Stone Showroom</span>
             </div>
           </a>
         </div>
