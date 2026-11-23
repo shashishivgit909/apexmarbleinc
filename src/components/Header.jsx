@@ -92,7 +92,7 @@ export default function Header() {
               <span className="apx-brand-subtitle">Natural Stone Showroom</span>
             </div>
           </a>
-        </div>
+        </div>24
 
         {/* RIGHT GROUP */}
         <div className="apx-header-actions-group">
