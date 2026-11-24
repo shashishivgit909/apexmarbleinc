@@ -18,49 +18,49 @@ export const websiteData = {
     trustedPillText: "Trusted by Silicon Valley Homeowners"
   },
 
-  // Pages are kept visible in navigation, with external/other-page routes commented out
+  // All navigation headings and sub-pages routed to dedicated views
   navigation: [
     { id: "home", name: "Home", href: "/" },
     {
       id: "slabs",
       name: "Slabs",
-      href: "#", // "https://www.apexmarbleinc.com/slabs"
+      href: "/slabs",
       subItems: [
-        { name: "Quartzite Slabs", href: "#" /* "https://www.apexmarbleinc.com/quartzite-slabs" */ },
-        { name: "Granite Slabs", href: "#" /* "https://www.apexmarbleinc.com/granite-slabs" */ },
-        { name: "Marble Slabs", href: "#" /* "https://www.apexmarbleinc.com/marble-slabs" */ },
-        { name: "Quartz Slabs", href: "#" /* "https://www.apexmarbleinc.com/quartz-slabs" */ },
-        { name: "Porcelain Slabs", href: "#" /* "https://www.apexmarbleinc.com/porcelain-slabs" */ },
-        { name: "Dekton Slabs", href: "#" /* "https://www.apexmarbleinc.com/dekton-slabs" */ },
-        { name: "Specialty Slabs", href: "#" /* "https://www.apexmarbleinc.com/specialty-slabs" */ },
-        { name: "Promotional Slabs", href: "#" /* "https://www.apexmarbleinc.com/promotional-slabs" */ }
+        { name: "Quartzite Slabs", href: "/quartzite-slabs" },
+        { name: "Granite Slabs", href: "/granite-slabs" },
+        { name: "Marble Slabs", href: "/marble-slabs" },
+        { name: "Quartz Slabs", href: "/quartz-slabs" },
+        { name: "Porcelain Slabs", href: "/porcelain-slabs" },
+        { name: "Dekton Slabs", href: "/dekton-slabs" },
+        { name: "Specialty Slabs", href: "/specialty-slabs" },
+        { name: "Promotional Slabs", href: "/promotional-slabs" }
       ]
     },
     {
       id: "tiles",
       name: "Tiles",
-      href: "#", // "https://www.apexmarbleinc.com/tiles"
+      href: "/tiles",
       subItems: [
-        { name: "Tiles", href: "#" /* "https://www.apexmarbleinc.com/tiles" */ },
-        { name: "Promotional Tiles", href: "#" /* "https://www.apexmarbleinc.com/promotional-tiles" */ }
+        { name: "Tiles", href: "/tiles" },
+        { name: "Promotional Tiles", href: "/promotional-tiles" }
       ]
     },
     {
       id: "countertops",
       name: "Countertops",
-      href: "#", // "https://www.apexmarbleinc.com/countertops"
+      href: "/countertops",
       subItems: [
-        { name: "Countertops", href: "#" /* "https://www.apexmarbleinc.com/countertops" */ },
-        { name: "Pre Fab", href: "#" /* "https://www.apexmarbleinc.com/pre-fab" */ }
+        { name: "Countertops", href: "/countertops" },
+        { name: "Pre Fab", href: "/pre-fab" }
       ]
     },
-    { id: "flooring", name: "Flooring", href: "#" /* "https://www.apexmarbleinc.com/flooring" */ },
-    { id: "showerpanels", name: "ShowerPanels", href: "#" /* "https://www.apexmarbleinc.com/showerpanels" */ },
-    { id: "gallery", name: "Gallery", href: "#" /* "https://www.apexmarbleinc.com/gallery" */ },
-    { id: "store", name: "Store", href: "#" /* "https://www.apexmarbleinc.com/store" */ },
-    { id: "about", name: "About", href: "#" /* "https://www.apexmarbleinc.com/about" */ },
-    { id: "faq", name: "FAQ", href: "#" /* "https://www.apexmarbleinc.com/faq" */ },
-    { id: "contact", name: "Contact", href: "#" /* "https://www.apexmarbleinc.com/contact" */ }
+    { id: "flooring", name: "Flooring", href: "/flooring" },
+    { id: "showerpanels", name: "ShowerPanels", href: "/showerpanels" },
+    { id: "gallery", name: "Gallery", href: "/gallery" },
+    { id: "store", name: "Store", href: "/store" },
+    { id: "about", name: "About", href: "/about" },
+    { id: "faq", name: "FAQ", href: "/faq" },
+    { id: "contact", name: "Contact", href: "/contact" }
   ],
 
   // 11 Exact Hero Slides from https://www.apexmarbleinc.com/
@@ -165,7 +165,7 @@ export const websiteData = {
       {
         id: "quartzite",
         title: "Quartzite",
-        href: "#", // "https://www.apexmarbleinc.com/quartzite-slabs"
+        href: "/quartzite-slabs",
         image: "/images/material-quartzite.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1qkLeyOh1IJorhZWDE0ugxHdbjHd600wR=w1200",
         description: "Harder than granite with the exotic look of marble. High resistance to scratching, UV fading, and acidic etching.",
@@ -174,7 +174,7 @@ export const websiteData = {
       {
         id: "granite",
         title: "Granite",
-        href: "#", // "https://www.apexmarbleinc.com/granite-slabs"
+        href: "/granite-slabs",
         image: "/images/material-granite.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1FwDf1PHiWqkoIA6XOqqOcmY0WgsYA2uP=w1200",
         description: "An authentic classic known for enduring strength, dense mineral composition, and singular speckled aesthetics.",
@@ -183,7 +183,7 @@ export const websiteData = {
       {
         id: "marble",
         title: "Marble",
-        href: "#", // "https://www.apexmarbleinc.com/marble-slabs"
+        href: "/marble-slabs",
         image: "/images/material-marble.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1jtVPHdUzoO15BDYqtyGbqojuXDtFdWFT=w1200",
         description: "The timeless standard of luxury with luminous depth and iconic flow, lending unmatched grandeur to any space.",
@@ -192,7 +192,7 @@ export const websiteData = {
       {
         id: "quartz",
         title: "Quartz",
-        href: "#", // "https://www.apexmarbleinc.com/quartz-slabs"
+        href: "/quartz-slabs",
         image: "/images/material-quartz.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1brtNcaaI0A2M2DGEAVlVlaFIcSFMzNqy=w1200",
         description: "High-performance engineered stone combining pure crushed quartz with advanced polymers for non-porous durability.",
@@ -201,7 +201,7 @@ export const websiteData = {
       {
         id: "porcelain",
         title: "Porcelain",
-        href: "#", // "https://www.apexmarbleinc.com/porcelain-slabs"
+        href: "/porcelain-slabs",
         image: "/images/material-porcelain.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1Nr5Z8jJLsNhjn42597SzzHFuJPZD30En=w1200",
         description: "Lightweight ultra-compact slabs with zero porosity, suitable for seamless floor-to-ceiling cladding and outdoor bars.",
@@ -210,7 +210,7 @@ export const websiteData = {
       {
         id: "pre-fab",
         title: "Pre-Fab",
-        href: "#", // "https://www.apexmarbleinc.com/pre-fab"
+        href: "/pre-fab",
         image: "/images/material-prefab.jpg",
         remoteImage: "https://lh3.googleusercontent.com/d/1RgdIRb_V150V-3Ec-6IthXFxANljBlzZ=w1200",
         description: "Pre-fabricated countertops with factory-milled edges ready for rapid turnaround, superior quality, and cost savings.",

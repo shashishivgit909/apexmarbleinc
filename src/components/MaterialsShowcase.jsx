@@ -2,13 +2,20 @@ import React, { useState } from 'react';
 import { websiteData } from '../data/websiteData';
 import { ArrowUpRight, Layers, CheckCircle2 } from 'lucide-react';
 
-export default function MaterialsShowcase() {
+export default function MaterialsShowcase({ onNavigate }) {
   const { materialsSection } = websiteData;
   const items = materialsSection.items;
   const [activeFilter, setActiveFilter] = useState('all');
 
   const visibleItems =
     activeFilter === 'all' ? items : items.filter((item) => item.id === activeFilter);
+
+  const handleCardNavigate = (e, href) => {
+    if (onNavigate && href && href !== '#') {
+      e.preventDefault();
+      onNavigate(href);
+    }
+  };
 
   return (
     <section id="materials-showcase-section" className="apx-materials-section">
@@ -96,12 +103,8 @@ export default function MaterialsShowcase() {
 
                   <div className="apx-card-action">
                     <a
-                      href="#main-site-footer"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const el = document.getElementById('main-site-footer');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }}
+                      href={item.href}
+                      onClick={(e) => handleCardNavigate(e, item.href)}
                       className="apx-card-link"
                     >
                       <span>Inquire About {item.title} Slabs</span>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MessageCircle, Phone, FileText, X } from 'lucide-react';
 import { websiteData } from '../data/websiteData';
 
-export default function WhatsAppWidget() {
+export default function WhatsAppWidget({ onNavigate }) {
   const [isOpen, setIsOpen] = useState(false);
   const { company } = websiteData;
 
@@ -35,11 +35,11 @@ export default function WhatsAppWidget() {
 
             <div className="apx-concierge-actions">
               <a
-                href="#main-site-footer"
-                onClick={() => {
+                href="/contact"
+                onClick={(e) => {
+                  e.preventDefault();
                   setIsOpen(false);
-                  const el = document.getElementById('main-site-footer');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  if (onNavigate) onNavigate('/contact');
                 }}
                 className="apx-concierge-btn apx-btn-inquiry"
               >
@@ -56,11 +56,11 @@ export default function WhatsAppWidget() {
               </a>
 
               <a
-                href="#materials-showcase-section"
-                onClick={() => {
+                href="/slabs"
+                onClick={(e) => {
+                  e.preventDefault();
                   setIsOpen(false);
-                  const el = document.getElementById('materials-showcase-section');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  if (onNavigate) onNavigate('/slabs');
                 }}
                 className="apx-concierge-btn apx-btn-view"
               >

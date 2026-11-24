@@ -5,7 +5,7 @@ import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
 // Important headings displayed in the desktop navigation headers
 const IMPORTANT_NAV_IDS = ['home', 'slabs', 'tiles', 'countertops', 'gallery', 'about', 'contact'];
 
-export default function Header() {
+export default function Header({ currentRoute = '/', onNavigate }) {
   const { company, navigation } = websiteData;
 
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -42,30 +42,22 @@ export default function Header() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleNavClick = (e, item) => {
-    if (item.id === 'home') {
-      return;
+  const isNavItemActive = (item) => {
+    if (item.href === currentRoute) return true;
+    if (item.subItems && item.subItems.some((sub) => sub.href === currentRoute)) {
+      return true;
     }
-    if (item.id === 'about') {
-      e.preventDefault();
-      const el = document.getElementById('about-experience-section');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
-    if (item.id === 'gallery' || item.id === 'slabs') {
-      e.preventDefault();
-      const el = document.getElementById('materials-showcase-section');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
-    if (item.id === 'contact') {
-      e.preventDefault();
-      const el = document.getElementById('main-site-footer');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
-    // Prevent routing to separate pages
+    return false;
+  };
+
+  const handleLinkNavigate = (e, href) => {
     e.preventDefault();
+    setActiveDropdown(null);
+    setSideMenuOpen(false);
+    setMobileMenuOpen(false);
+    if (onNavigate) {
+      onNavigate(href);
+    }
   };
 
   return (
@@ -76,7 +68,12 @@ export default function Header() {
       <div className="apx-container apx-header-inner">
         {/* LEFT: Original Company Logo (100% Untouched) + Architectural Typography */}
         <div className="apx-brand-block">
-          <a href="#hero-slideshow-section" className="apx-brand-link" aria-label={company.name}>
+          <a
+            href="/"
+            className="apx-brand-link"
+            aria-label={company.name}
+            onClick={(e) => handleLinkNavigate(e, '/')}
+          >
             <img
               src={company.headerLogo}
               alt={company.name}
@@ -92,7 +89,7 @@ export default function Header() {
               <span className="apx-brand-subtitle">Natural Stone Showroom</span>
             </div>
           </a>
-        </div>24
+        </div>
 
         {/* RIGHT GROUP */}
         <div className="apx-header-actions-group">
@@ -102,7 +99,7 @@ export default function Header() {
               {importantNavItems.map((item) => {
                 const hasSub = item.subItems && item.subItems.length > 0;
                 const isOpen = activeDropdown === item.id;
-                const isHome = item.id === 'home';
+                const isActive = isNavItemActive(item);
 
                 return (
                   <li
@@ -112,9 +109,9 @@ export default function Header() {
                     onMouseLeave={() => hasSub && setActiveDropdown(null)}
                   >
                     <a
-                      href={isHome ? '#hero-slideshow-section' : '#'}
-                      className={`apx-nav-link ${isHome ? 'is-active' : ''}`}
-                      onClick={(e) => handleNavClick(e, item)}
+                      href={item.href}
+                      className={`apx-nav-link ${isActive ? 'is-active' : ''}`}
+                      onClick={(e) => handleLinkNavigate(e, item.href)}
                     >
                       <span>{item.name}</span>
                       {hasSub && <ChevronDown size={13} className={`apx-caret ${isOpen ? 'is-open' : ''}`} />}
@@ -126,15 +123,11 @@ export default function Header() {
                           {item.subItems.map((sub, idx) => (
                             <li key={idx}>
                               <a
-                                href="#"
-                                /* href={sub.href} — route navigation commented out */
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  setActiveDropdown(null);
-                                  const el = document.getElementById('materials-showcase-section');
-                                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                                }}
-                                className="apx-dropdown-link"
+                                href={sub.href}
+                                onClick={(e) => handleLinkNavigate(e, sub.href)}
+                                className={`apx-dropdown-link ${
+                                  currentRoute === sub.href ? 'is-active' : ''
+                                }`}
                               >
                                 <span>{sub.name}</span>
                                 <ArrowUpRight size={13} className="apx-dropdown-icon" />
@@ -174,15 +167,11 @@ export default function Header() {
                   {remainingNavItems.map((item) => (
                     <li key={item.id} className="apx-side-menu-item">
                       <a
-                        href="#"
-                        /* href={item.href} — route navigation commented out */
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setSideMenuOpen(false);
-                          const el = document.getElementById('materials-showcase-section');
-                          if (el) el.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                        className="apx-side-menu-link"
+                        href={item.href}
+                        onClick={(e) => handleLinkNavigate(e, item.href)}
+                        className={`apx-side-menu-link ${
+                          currentRoute === item.href ? 'is-active' : ''
+                        }`}
                       >
                         <span>{item.name}</span>
                         <ArrowUpRight size={14} className="apx-side-menu-icon" />
@@ -194,7 +183,7 @@ export default function Header() {
             )}
           </div>
 
-          {/* Mobile Menu Button: Toggles Mobile Drawer with ALL headings as previous */}
+          {/* Mobile Menu Button: Toggles Mobile Drawer with ALL headings */}
           <button
             type="button"
             className={`apx-mobile-btn ${mobileMenuOpen ? 'is-active' : ''}`}
@@ -207,7 +196,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Drawer: Contains ALL Headings in Mobile View as Previous */}
+      {/* Mobile Drawer: Contains ALL Headings in Mobile View */}
       {mobileMenuOpen && (
         <div className="apx-mobile-drawer" role="dialog" aria-label="Mobile Navigation Menu">
           <div className="apx-container">
@@ -220,12 +209,9 @@ export default function Header() {
                   <li key={item.id} className="apx-mobile-item">
                     <div className="apx-mobile-row">
                       <a
-                        href={item.id === 'home' ? '#hero-slideshow-section' : '#'}
+                        href={item.href}
                         className="apx-mobile-link"
-                        onClick={(e) => {
-                          handleNavClick(e, item);
-                          if (!hasSub) setMobileMenuOpen(false);
-                        }}
+                        onClick={(e) => handleLinkNavigate(e, item.href)}
                       >
                         {item.name}
                       </a>
@@ -252,15 +238,9 @@ export default function Header() {
                         {item.subItems.map((sub, idx) => (
                           <li key={idx}>
                             <a
-                              href="#"
-                              /* href={sub.href} — route navigation commented out */
+                              href={sub.href}
                               className="apx-mobile-sublink"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                setMobileMenuOpen(false);
-                                const el = document.getElementById('materials-showcase-section');
-                                if (el) el.scrollIntoView({ behavior: 'smooth' });
-                              }}
+                              onClick={(e) => handleLinkNavigate(e, sub.href)}
                             >
                               {sub.name}
                             </a>

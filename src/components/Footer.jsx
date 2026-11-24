@@ -2,9 +2,16 @@ import React from 'react';
 import { websiteData } from '../data/websiteData';
 import { Star, MapPin, Phone, Mail, ArrowUpRight, Award } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
   const { company, navigation, footerSection } = websiteData;
   const slabSubItems = navigation.find((n) => n.id === 'slabs')?.subItems || [];
+
+  const handleLinkClick = (e, href) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate(href);
+    }
+  };
 
   const renderStars = (rating) => {
     if (!rating) return null;
@@ -72,7 +79,11 @@ export default function Footer() {
         <div className="apx-footer-grid">
           {/* Column 1: Untouched Company Logo + Brand Overview */}
           <div className="apx-footer-col apx-footer-brand">
-            <a href="#hero-slideshow-section" className="apx-footer-logo-link">
+            <a
+              href="/"
+              className="apx-footer-logo-link"
+              onClick={(e) => handleLinkClick(e, '/')}
+            >
               <img
                 src={company.footerLogo}
                 alt={company.name}
@@ -93,25 +104,15 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Column 2: Showroom Pages (Routes Commented Out) */}
+          {/* Column 2: Showroom Pages */}
           <div className="apx-footer-col">
             <h4 className="apx-footer-col-title">Showroom Pages</h4>
             <ul className="apx-footer-link-list apx-links-2col">
               {navigation.map((item) => (
                 <li key={item.id}>
                   <a
-                    href={item.id === 'home' ? '#hero-slideshow-section' : '#'}
-                    /* href={item.href} — route navigation commented out */
-                    onClick={(e) => {
-                      if (item.id !== 'home') e.preventDefault();
-                      if (item.id === 'about') {
-                        const el = document.getElementById('about-experience-section');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      } else if (item.id === 'slabs' || item.id === 'gallery') {
-                        const el = document.getElementById('materials-showcase-section');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
+                    href={item.href}
+                    onClick={(e) => handleLinkClick(e, item.href)}
                   >
                     {item.name}
                   </a>
@@ -127,12 +128,8 @@ export default function Footer() {
               {slabSubItems.map((sub, idx) => (
                 <li key={idx}>
                   <a
-                    href="#materials-showcase-section"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const el = document.getElementById('materials-showcase-section');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }}
+                    href={sub.href}
+                    onClick={(e) => handleLinkClick(e, sub.href)}
                   >
                     {sub.name}
                   </a>
