@@ -213,7 +213,7 @@ export const pagesData = {
         "Apex Marble Inc. supplies high-performance quartz surfaces ranging from sleek modern solids to realistic marble veining. Visit our San Jose showroom or view our collection below to find your perfect design."
       ],
       metaLines: [
-        { label: "Highlights", value: "Non-Porous • Zero Sealing Required • Stain & Moisture Resistant • 35%–40% Promotional Savings" }
+        { label: "Highlights", value: "Non-Porous • Zero Sealing Required • Stain & Moisture Resistant • 35% Public Inventory Promotion" }
       ],
       newArrivals: [],
       comingSoon: []
@@ -388,9 +388,9 @@ export const pagesData = {
 
     "countertops": {
       materialKey: "Prefab Countertop",
-      eyebrow: "PREFAB COUNTERTOP COLLECTION",
-      title: "Prefab Countertop",
-      exploreHeading: "Explore Our Prefab Countertop",
+      eyebrow: "PRE-FAB COLLECTION",
+      title: "Pre-Fab",
+      exploreHeading: "Explore Our Pre-Fab Collection",
       showSubMaterialFilter: true,
       slides: [
         "https://assets.zyrosite.com/A1az8Ze6q1IGrDxp/calacatta_tasmania_install-SpQpiZmHneSeXxKI.jpg",

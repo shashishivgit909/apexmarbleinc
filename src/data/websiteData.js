@@ -45,15 +45,7 @@ export const websiteData = {
         { name: "Promotional Tiles", href: "/promotional-tiles" }
       ]
     },
-    {
-      id: "countertops",
-      name: "Countertops",
-      href: "/countertops",
-      subItems: [
-        { name: "Countertops", href: "/countertops" },
-        { name: "Pre Fab", href: "/pre-fab" }
-      ]
-    },
+    { id: "pre-fab", name: "Pre-Fab", href: "/pre-fab" },
     { id: "flooring", name: "Flooring", href: "/flooring" },
     { id: "showerpanels", name: "ShowerPanels", href: "/showerpanels" },
     { id: "gallery", name: "Gallery", href: "/gallery" },
@@ -63,16 +55,8 @@ export const websiteData = {
     { id: "contact", name: "Contact", href: "/contact" }
   ],
 
-  // 11 Exact Hero Slides from https://www.apexmarbleinc.com/
+  // 10 Authentic Apex Showroom/Warehouse Hero Slides from https://www.apexmarbleinc.com/
   heroSlides: [
-    {
-      id: 1,
-      url: "/images/slide-1.png",
-      remoteUrl: "/images/slide-1.png", // Replaced clearance sale graphic with book-matched luxury Calacatta marble gallery
-      alt: "Apex Marble Book-Matched Calacatta Gold Slab Display",
-      title: "Exquisite Natural Stone",
-      subtitle: "Hand-selected slabs directly from premier world quarries"
-    },
     {
       id: 2,
       url: "/images/slide-2.webp",
@@ -337,43 +321,40 @@ export const websiteData = {
         name: "Yelp",
         stars: 4.5,
         ratingDisplay: "4.5 / 5",
-        href: "#apx-footer-reviews",
-        iconType: "image",
-        iconUrl: "https://cdn.freebiesupply.com/logos/large/2x/yelp-icon-logo-png-transparent.png",
+        href: "https://www.yelp.com/biz/apex-marble-san-jose-4",
+        platform: "yelp",
         actionText: "Yelp"
       },
       {
         name: "Google",
         stars: 4.8,
         ratingDisplay: "4.8 / 5",
-        href: "#apx-footer-reviews",
-        iconType: "image",
-        iconUrl: "https://cdn.freebiesupply.com/logos/large/2x/google-icon-logo-png-transparent.png",
+        href: "https://share.google/fWhLZcLgvWNodNS9W",
+        platform: "google",
         actionText: "Google"
       },
       {
         name: "Instagram",
         stars: null,
         ratingDisplay: "@apexmarbleinc",
-        href: "#apx-footer-reviews",
-        iconType: "image",
-        iconUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png",
+        href: "https://www.instagram.com/apexmarbleinc",
+        platform: "instagram",
         actionText: "Instagram"
       },
       {
         name: "Facebook",
         stars: null,
         ratingDisplay: "Follow Us",
-        href: "#apx-footer-reviews",
-        iconType: "facebook",
+        href: "https://www.facebook.com/apexmarbleinc",
+        platform: "facebook",
         actionText: "Facebook"
       },
       {
         name: "YouTube",
         stars: null,
         ratingDisplay: "Videos & Tours",
-        href: "#apx-footer-reviews",
-        iconType: "youtube",
+        href: "https://www.youtube.com/@ApexMarbleInc",
+        platform: "youtube",
         actionText: "YouTube"
       }
     ]

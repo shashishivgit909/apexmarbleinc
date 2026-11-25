@@ -368,24 +368,38 @@ ul, ol {
   transform: rotate(180deg);
 }
 
-/* Clean Dropdown Cards */
+/* Clean Stationary Dropdown Cards */
 .apx-dropdown-card {
   position: absolute;
-  inset-block-start: calc(100% + 0.4rem);
+  inset-block-start: 100%;
   inset-inline-start: 0;
-  min-inline-size: 220px;
+  min-inline-size: 235px;
   background-color: var(--apx-white);
   border: 1px solid var(--apx-stone-300);
-  box-shadow: 0 16px 36px rgba(35, 33, 31, 0.08);
-  padding: 0.85rem 0.65rem;
+  border-block-start: 2px solid var(--apx-bronze);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  box-shadow: 0 18px 40px rgba(35, 33, 31, 0.14);
+  padding: 0.75rem 0.65rem;
+  z-index: 200;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(8px);
-  transition: all var(--ease-smooth);
+  transform: translateY(4px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+/* Invisible hover bridge so moving cursor from nav link into dropdown never loses hover */
+.apx-dropdown-card::before {
+  content: '';
+  position: absolute;
+  inset-block-start: -16px;
+  inset-inline: -12px;
+  block-size: 18px;
+  background: transparent;
 }
 
 .apx-dropdown-card.is-visible,
+.apx-nav-item.is-dropdown-open .apx-dropdown-card,
 .apx-nav-item:hover .apx-dropdown-card {
   opacity: 1;
   visibility: visible;
@@ -1081,7 +1095,7 @@ ul, ol {
 .apx-timeless-section {
   position: relative;
   padding-block: clamp(4.25rem, 6.5vw, 6.25rem);
-  background-color: var(--apx-stone-100);
+  background-color: var(--apx-stone-50);
   border-block-end: 1px solid var(--apx-stone-300);
 }
 
@@ -1269,6 +1283,7 @@ ul, ol {
   max-block-size: 38px;
   max-inline-size: 130px;
   object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 .apx-partner-title {
@@ -1288,7 +1303,7 @@ ul, ol {
 }
 
 .apx-footer-reviews-band {
-  background-color: var(--apx-stone-100);
+  background-color: var(--apx-stone-50);
   border-block-end: 1px solid var(--apx-stone-300);
   padding-block: 3rem;
 }
@@ -1305,7 +1320,7 @@ ul, ol {
 }
 
 .apx-review-tile {
-  background-color: var(--apx-stone-50);
+  background-color: var(--apx-white);
   border: 1px solid var(--apx-stone-300);
   border-radius: var(--radius-md);
   padding: 1.1rem 1.25rem;
@@ -1313,6 +1328,7 @@ ul, ol {
   flex-direction: column;
   justify-content: space-between;
   gap: 0.65rem;
+  box-shadow: 0 6px 18px rgba(62, 58, 53, 0.04);
   transition: all var(--ease-smooth);
 }
 
@@ -1320,7 +1336,7 @@ ul, ol {
   background-color: var(--apx-white);
   border-color: var(--apx-bronze);
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(62, 58, 53, 0.06);
+  box-shadow: 0 10px 24px rgba(62, 58, 53, 0.08);
 }
 
 .apx-review-top {
@@ -1329,8 +1345,23 @@ ul, ol {
   justify-content: space-between;
 }
 
+.apx-review-brand-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.apx-platform-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 24px;
+  block-size: 24px;
+  flex-shrink: 0;
+}
+
 .apx-review-name {
-  font-size: 0.8125rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--apx-charcoal-900);
 }
@@ -1945,15 +1976,28 @@ ul, ol {
   inset-block-start: 0.65rem;
   inset-inline-start: 0.65rem;
   z-index: 6;
-  padding: 0.28rem 0.65rem;
-  font-size: 0.68rem;
-  font-weight: 600;
+  padding: 0.32rem 0.72rem;
+  font-size: 0.72rem;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border-radius: var(--radius-sm);
   background-color: var(--apx-bronze);
   color: var(--apx-white);
   box-shadow: 0 4px 12px rgba(30, 19, 12, 0.25);
+}
+
+.apx-slab-badge.is-promo {
+  background-color: #D94E1F;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 14px rgba(217, 78, 31, 0.45);
+}
+
+.apx-slab-badge.is-new {
+  background-color: #B8732A;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .apx-slab-badge.is-sold,
@@ -1963,13 +2007,15 @@ ul, ol {
 }
 
 .apx-slab-item-body {
-  padding: 0.9rem 0.6rem 0.55rem;
+  padding: 0.85rem 0.6rem 0.5rem;
 }
 
 .apx-slab-item-title {
+  font-family: var(--font-serif);
   font-size: 1.15rem;
+  font-weight: 400;
   color: var(--apx-charcoal-900);
-  margin-block-end: 0.25rem;
+  margin-block-end: 0;
 }
 
 .apx-slab-item-meta {
@@ -2123,7 +2169,7 @@ ul, ol {
 
 .apx-tile-brand-thumb {
   block-size: 130px;
-  background-color: var(--apx-stone-50);
+  background-color: var(--apx-white);
   border: 1px solid var(--apx-stone-200);
   border-radius: var(--radius-sm);
   display: flex;
@@ -2137,6 +2183,7 @@ ul, ol {
   max-block-size: 100%;
   max-inline-size: 100%;
   object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 .apx-tile-brand-body {
@@ -2666,6 +2713,10 @@ ul, ol {
   padding: 0.55rem 0.75rem;
 }
 
+.apx-spec-pill-dimensions {
+  grid-column: span 2;
+}
+
 .apx-spec-lbl {
   display: block;
   font-size: 0.68rem;
@@ -2677,6 +2728,17 @@ ul, ol {
 .apx-spec-val {
   font-size: 0.88rem;
   color: var(--apx-charcoal-900);
+}
+
+.apx-spec-val-dimensions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.apx-dimension-line {
+  display: block;
+  white-space: nowrap;
 }
 
 .apx-modal-desc {

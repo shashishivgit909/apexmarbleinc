@@ -214,16 +214,39 @@ function ProductDetailModal({ product, onClose, onNavigate }) {
             <h2 className="apx-modal-title">{product.title}</h2>
 
             <div className="apx-modal-specs-grid">
-              {product.batch && (
-                <div className="apx-spec-pill">
-                  <span className="apx-spec-lbl">Batch / Block</span>
-                  <strong className="apx-spec-val">{product.batch}</strong>
-                </div>
-              )}
+              {(() => {
+                const rawBatch = (product.batch || '').trim();
+                const isQuartzOrCambriaOrSilestone =
+                  (product.material || '').toLowerCase() === 'quartz' ||
+                  (product.brand || '').toLowerCase().includes('cambria') ||
+                  (product.brand || '').toLowerCase().includes('silestone') ||
+                  (product.title || '').toLowerCase().includes('cambria') ||
+                  (product.title || '').toLowerCase().includes('silestone');
+                const showBatch =
+                  rawBatch &&
+                  (!isQuartzOrCambriaOrSilestone || /^#?AQ[A-Z]*\d{3,6}$/i.test(rawBatch));
+
+                return showBatch ? (
+                  <div className="apx-spec-pill">
+                    <span className="apx-spec-lbl">Batch / Block</span>
+                    <strong className="apx-spec-val">{rawBatch}</strong>
+                  </div>
+                ) : null;
+              })()}
               {product.dimensions && (
-                <div className="apx-spec-pill">
+                <div className="apx-spec-pill apx-spec-pill-dimensions">
                   <span className="apx-spec-lbl">Dimensions</span>
-                  <strong className="apx-spec-val">{product.dimensions}</strong>
+                  <strong className="apx-spec-val apx-spec-val-dimensions">
+                    {product.dimensions
+                      .split(/[,;]+/)
+                      .map((dim) => dim.trim())
+                      .filter(Boolean)
+                      .map((dim, idx) => (
+                        <span key={idx} className="apx-dimension-line">
+                          {dim}
+                        </span>
+                      ))}
+                  </strong>
                 </div>
               )}
               {product.area && (
@@ -401,16 +424,17 @@ export function MaterialCollectionPage({ pageKey, onNavigate }) {
     if (pageKey === 'promotional-slabs') {
       return inventoryData.filter(
         (p) =>
-          p.material.toLowerCase().trim() === targetMat ||
+          (p.material || '').toLowerCase().trim() === targetMat ||
           (p.discount && p.discount !== '' && p.discount !== '0%')
       );
     }
-    return inventoryData.filter((p) =>
-      p.material.toLowerCase().includes(targetMat)
+    // Exact material match so "Quartzite" is never mixed into "Quartz"
+    return inventoryData.filter(
+      (p) => (p.material || '').toLowerCase().trim() === targetMat
     );
   }, [config, pageKey]);
 
-  // Helper for discount badge (matches apexmarbleinc.com logic)
+  // Helper for discount badge (Public Quartz Inventory Promotion is 35%; Promotional Slabs range 35% to 50% OFF)
   const getProductBadge = (p) => {
     const titleLower = (p.title || '').toLowerCase().trim();
     const idLower = (p.id || '').toLowerCase().trim();
@@ -422,15 +446,15 @@ export function MaterialCollectionPage({ pageKey, onNavigate }) {
     }
 
     if (pageKey === 'quartz-slabs') {
-      const b = (p.brand || '').toLowerCase();
-      if (b.includes('silestone') || b.includes('cambria')) {
-        return { text: '35% OFF', type: 'promo' };
+      if (p.discount && p.discount !== '0%' && p.discount !== '') {
+        return { text: `${p.discount} OFF`, type: 'promo' };
       }
-      return { text: '40% OFF', type: 'promo' };
+      return { text: '35% OFF', type: 'promo' };
     }
 
-    if (pageKey === 'promotional-slabs' && p.discount && p.discount !== '0%') {
-      return { text: `${p.discount} OFF`, type: 'promo' };
+    if (pageKey === 'promotional-slabs') {
+      const disc = p.discount && p.discount !== '0%' && p.discount !== '' ? p.discount : '35%';
+      return { text: `${disc} OFF`, type: 'promo' };
     }
 
     if (
@@ -449,7 +473,7 @@ export function MaterialCollectionPage({ pageKey, onNavigate }) {
       return { text: 'New Arrival', type: 'new' };
     }
 
-    if (p.discount && p.discount !== '0%') {
+    if (p.discount && p.discount !== '0%' && p.discount !== '') {
       return { text: `${p.discount} OFF`, type: 'promo' };
     }
 
@@ -796,11 +820,6 @@ export function MaterialCollectionPage({ pageKey, onNavigate }) {
 
                     <div className="apx-slab-item-body">
                       <h3 className="apx-slab-item-title">{product.title}</h3>
-                      <div className="apx-slab-item-meta">
-                        <span>{product.material || config.materialKey}</span>
-                        {product.dimensions && <span>• {product.dimensions}</span>}
-                        {product.finish && <span>• {product.finish}</span>}
-                      </div>
                     </div>
                   </article>
                 );
@@ -819,97 +838,9 @@ export function MaterialCollectionPage({ pageKey, onNavigate }) {
   );
 }
 
-// 3. /pre-fab Page
+// 3. /pre-fab Page (Displays Pre-Fab Slab inventory directly with clean thumbnails + pop-out details)
 export function PreFabPage({ onNavigate }) {
-  const { preFabPage } = pagesData;
-
-  return (
-    <div className="apx-page-wrap">
-      <PageSlideshow slides={preFabPage.slides} altPrefix="Apex Marble Pre-Fab Slabs" />
-
-      <section className="apx-subpage-intro-section">
-        <div className="apx-container">
-          <div className="apx-subpage-intro-card">
-            <span className="apx-eyebrow">
-              <Layers size={13} />
-              <span>{preFabPage.eyebrow}</span>
-            </span>
-            <h1 className="apx-section-title">{preFabPage.title}</h1>
-            {preFabPage.paragraphs.map((p, idx) => (
-              <p key={idx} className="apx-subpage-lead">
-                {p}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="apx-materials-section">
-        <div className="apx-container">
-          <div className="apx-prefab-2col-grid">
-            {preFabPage.categories.map((cat) => (
-              <article
-                key={cat.id}
-                className="apx-material-card apx-clickable-card"
-                onClick={() => onNavigate(cat.href)}
-              >
-                <div className="apx-card-media">
-                  <span className="apx-card-series">PRE-FAB COLLECTION</span>
-                  <img
-                    src={cat.image}
-                    alt={`${cat.title} ${cat.highlight}`}
-                    className="apx-card-img"
-                    loading="lazy"
-                    onError={(e) => {
-                      if (cat.fallbackImage && e.target.src !== cat.fallbackImage) {
-                        e.target.src = cat.fallbackImage;
-                      } else if (cat.localFallback && e.target.src !== cat.localFallback) {
-                        e.target.src = cat.localFallback;
-                      }
-                    }}
-                  />
-                  <div className="apx-card-hover-overlay">
-                    <span>Explore {cat.title} {cat.highlight}</span>
-                    <ArrowUpRight size={14} />
-                  </div>
-                </div>
-
-                <div className="apx-card-info">
-                  <div className="apx-card-heading-row">
-                    <h2 className="apx-card-title">
-                      {cat.title} <span className="apx-accent-word">{cat.highlight}</span>
-                    </h2>
-                    <span className="apx-card-status">In Stock</span>
-                  </div>
-
-                  {cat.paragraphs.map((p, idx) => (
-                    <p key={idx} className="apx-card-desc">
-                      {p}
-                    </p>
-                  ))}
-
-                  <div className="apx-card-action">
-                    <a
-                      href={cat.href}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        onNavigate(cat.href);
-                      }}
-                      className="apx-card-link"
-                    >
-                      <span>Browse {cat.title} {cat.highlight} Inventory</span>
-                      <ArrowUpRight size={14} />
-                    </a>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  return <MaterialCollectionPage pageKey="countertops" onNavigate={onNavigate} />;
 }
 
 // 4. /showerpanels Page

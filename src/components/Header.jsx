@@ -3,7 +3,7 @@ import { websiteData } from '../data/websiteData';
 import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
 
 // Important headings displayed in the desktop navigation headers
-const IMPORTANT_NAV_IDS = ['home', 'slabs', 'tiles', 'countertops', 'gallery', 'about', 'contact'];
+const IMPORTANT_NAV_IDS = ['home', 'slabs', 'tiles', 'pre-fab', 'gallery', 'about', 'contact'];
 
 export default function Header({ currentRoute = '/', onNavigate }) {
   const { company, navigation } = websiteData;
@@ -13,6 +13,26 @@ export default function Header({ currentRoute = '/', onNavigate }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const menuRef = useRef(null);
+  const navRef = useRef(null);
+  const closeTimeoutRef = useRef(null);
+
+  const openDropdown = (id) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveDropdown(id);
+  };
+
+  const scheduleCloseDropdown = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    // Keep dropdown stationary while user maneuvers or scrolls inside the menu
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 320);
+  };
 
   // 1. Important headings for desktop navigation headers
   const importantNavItems = IMPORTANT_NAV_IDS
@@ -28,7 +48,7 @@ export default function Header({ currentRoute = '/', onNavigate }) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -37,13 +57,22 @@ export default function Header({ currentRoute = '/', onNavigate }) {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
         setSideMenuOpen(false);
       }
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setActiveDropdown(null);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    };
   }, []);
 
   const isNavItemActive = (item) => {
     if (item.href === currentRoute) return true;
+    if (item.id === 'pre-fab' && (currentRoute === '/pre-fab' || currentRoute === '/countertops')) {
+      return true;
+    }
     if (item.subItems && item.subItems.some((sub) => sub.href === currentRoute)) {
       return true;
     }
@@ -52,6 +81,10 @@ export default function Header({ currentRoute = '/', onNavigate }) {
 
   const handleLinkNavigate = (e, href) => {
     e.preventDefault();
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
     setActiveDropdown(null);
     setSideMenuOpen(false);
     setMobileMenuOpen(false);
@@ -94,7 +127,7 @@ export default function Header({ currentRoute = '/', onNavigate }) {
         {/* RIGHT GROUP */}
         <div className="apx-header-actions-group">
           {/* Desktop Navigation: Important Headings Only */}
-          <nav className="apx-desktop-nav" aria-label="Main Navigation">
+          <nav className="apx-desktop-nav" aria-label="Main Navigation" ref={navRef}>
             <ul className="apx-nav-list">
               {importantNavItems.map((item) => {
                 const hasSub = item.subItems && item.subItems.length > 0;
@@ -104,9 +137,9 @@ export default function Header({ currentRoute = '/', onNavigate }) {
                 return (
                   <li
                     key={item.id}
-                    className={`apx-nav-item ${hasSub ? 'has-folder' : ''}`}
-                    onMouseEnter={() => hasSub && setActiveDropdown(item.id)}
-                    onMouseLeave={() => hasSub && setActiveDropdown(null)}
+                    className={`apx-nav-item ${hasSub ? 'has-folder' : ''} ${isOpen ? 'is-dropdown-open' : ''}`}
+                    onMouseEnter={() => hasSub && openDropdown(item.id)}
+                    onMouseLeave={() => hasSub && scheduleCloseDropdown()}
                   >
                     <a
                       href={item.href}
@@ -114,11 +147,29 @@ export default function Header({ currentRoute = '/', onNavigate }) {
                       onClick={(e) => handleLinkNavigate(e, item.href)}
                     >
                       <span>{item.name}</span>
-                      {hasSub && <ChevronDown size={13} className={`apx-caret ${isOpen ? 'is-open' : ''}`} />}
+                      {hasSub && (
+                        <ChevronDown
+                          size={13}
+                          className={`apx-caret ${isOpen ? 'is-open' : ''}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            if (isOpen) {
+                              setActiveDropdown(null);
+                            } else {
+                              openDropdown(item.id);
+                            }
+                          }}
+                        />
+                      )}
                     </a>
 
                     {hasSub && (
-                      <div className={`apx-dropdown-card ${isOpen ? 'is-visible' : ''}`}>
+                      <div
+                        className={`apx-dropdown-card ${isOpen ? 'is-visible' : ''}`}
+                        onMouseEnter={() => openDropdown(item.id)}
+                        onMouseLeave={() => scheduleCloseDropdown()}
+                      >
                         <ul className="apx-dropdown-list">
                           {item.subItems.map((sub, idx) => (
                             <li key={idx}>

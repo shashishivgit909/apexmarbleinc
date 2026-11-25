@@ -2296,7 +2296,7 @@
   },
   {
     "id": "OCEAN_BLUE",
-    "title": "OCEAN BLUE",
+    "title": "Ocean Blue",
     "material": "Quartzite",
     "categoryName": "Back to Quartzite",
     "image": "https://lh3.googleusercontent.com/d/1AUf6ClYLgdZjKEkzmumOhBHsxa2-PFHm=w1200",
@@ -3844,7 +3844,7 @@
     "brand": "",
     "newArrival": "",
     "comingSoon": "",
-    "discount": "25%",
+    "discount": "35%",
     "msrp": "$1,872.00",
     "promoPrice": "$1,404.00",
     "inventory": ""
@@ -7062,7 +7062,7 @@
     "brand": "Quartz",
     "newArrival": "",
     "comingSoon": "",
-    "discount": "30%",
+    "discount": "35%",
     "msrp": "$1,795",
     "promoPrice": "$1,250",
     "inventory": "33"
@@ -7215,7 +7215,7 @@
     "brand": "Quartz",
     "newArrival": "",
     "comingSoon": "",
-    "discount": "",
+    "discount": "50%",
     "msrp": "",
     "promoPrice": "",
     "inventory": "2"
@@ -7284,7 +7284,7 @@
   },
   {
     "id": "EverestGold_Quartz",
-    "title": "EverestGold",
+    "title": "Everest Gold",
     "material": "Quartz",
     "categoryName": "Back to Quartz",
     "image": "https://lh3.googleusercontent.com/d/1S270fJsm7xtqHj333Bs0EYchf9wZHNu9=w1200",
@@ -7379,7 +7379,7 @@
   },
   {
     "id": "TajMahal_Quartz.",
-    "title": "Taj  Mahal",
+    "title": "Taj Mahal",
     "material": "Quartz",
     "categoryName": "Back to Quartz",
     "image": "https://lh3.googleusercontent.com/d/1Uz6i6TP8am7ulG9XT6FXPfayB0hj9WrI=w1200",
@@ -7450,7 +7450,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1EmZDXE0axv1_mgPC4XCpoCBs0P3XQzvD&sz=w4000"
     ],
-    "batch": "#G29",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7479,7 +7479,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1bxo3n8DWyzo74OdJFQCX-robS-h4KYDN&sz=w4000"
     ],
-    "batch": "#G19",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7508,7 +7508,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1Q_NnsIblHOUauBUh6_yOMybhDuRQ_Vuh&sz=w4000"
     ],
-    "batch": "#G19",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7537,7 +7537,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1qZ18l0vGD0WirPTnzWnCR8_C_SLFI-a1&sz=w4000"
     ],
-    "batch": "#G19",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7566,7 +7566,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=12wXz93z-iuZqv7PIlI9JPX9RoPCfrXnc&sz=w4000"
     ],
-    "batch": "#P6",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7595,7 +7595,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1pJPq4CQSG45xLZuhxVwvH5UeMVb6KAip&sz=w4000"
     ],
-    "batch": "#P6",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "3cm",
@@ -7624,7 +7624,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1nTv9avK9tQKoFb7dQjBMgI5g76avN02F&sz=w4000"
     ],
-    "batch": "#G19",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7653,7 +7653,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1h7T9cdWRLyerKuZSBMx1hLFLpdrfRs7I&sz=w4000"
     ],
-    "batch": "#G29",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7682,7 +7682,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1En_vsUf4FnWbPsK2HnU_2XDhMKHD0YPq&sz=w4000"
     ],
-    "batch": "#G2",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7711,7 +7711,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1mcl6TExAG-OMIg2SwCLxvfa1Bj3l7Vxo&sz=w4000"
     ],
-    "batch": "#G19",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7740,7 +7740,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1ic_I1NksQ9uOiPUwyi2HEfwzYi90ofRl&sz=w4000"
     ],
-    "batch": "#G14",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7769,7 +7769,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1ic_I1NksQ9uOiPUwyi2HEfwzYi90ofRl&sz=w4000"
     ],
-    "batch": "#G15",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7856,7 +7856,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1iF_k7TAfmXL5ooViNLim5sW1L-OAaXYn&sz=w4000"
     ],
-    "batch": "#G21 / G31",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7885,7 +7885,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1mFrUiXAOfsmMuLjFl5RyW9TlhsKQ8pNb&sz=w4000"
     ],
-    "batch": "#F28 / G26",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7914,7 +7914,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1h0CbOmVDAMEbWFEUynfOMvfejwkSC8V6&sz=w4000"
     ],
-    "batch": "#F23",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7943,7 +7943,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1h0CbOmVDAMEbWFEUynfOMvfejwkSC8V6&sz=w4000"
     ],
-    "batch": "#F24",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -7972,7 +7972,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=18UBxmo49C5ZZ2zKf1EPP2HaaUFNFe7zW&sz=w4000"
     ],
-    "batch": "F22 / G24",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -8001,7 +8001,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1kcWcGN_dLnC6RwJFIrx7WlK1NH7CAoKK&sz=w4000"
     ],
-    "batch": "G25",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -8030,7 +8030,7 @@
     "fallbackImages": [
       "https://lh3.googleusercontent.com/d/1I7Plje_OTPNAOgyZDbfC706liBAmYJss=w4000?authuser=0"
     ],
-    "batch": "F13 / F16 / G13",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -8059,7 +8059,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1I7Plje_OTPNAOgyZDbfC706liBAmYJss&sz=w4000"
     ],
-    "batch": "G13",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -8146,7 +8146,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1ZZ-qrXBSjolSHJhljbhuYt3_W4zEjNXU&sz=w4000"
     ],
-    "batch": "F10 / G33 / P7",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -8175,7 +8175,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1ZZ-qrXBSjolSHJhljbhuYt3_W4zEjNXU&sz=w4000"
     ],
-    "batch": "F10 / G12",
+    "batch": "",
     "dimensions": "126” x 63”",
     "area": "55.12",
     "thickness": "2cm",
@@ -8657,7 +8657,7 @@
     "brand": "Marble",
     "newArrival": "",
     "comingSoon": "",
-    "discount": "30%",
+    "discount": "35%",
     "msrp": "$1,850.00",
     "promoPrice": "$1,295.00",
     "inventory": "1"
@@ -8801,7 +8801,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1O_rQ74jI-KX4ZQ-JsIXF7Ls3jWxLvSbx&sz=w4000"
     ],
-    "batch": "#P7",
+    "batch": "",
     "dimensions": "126\" × 56\"",
     "area": "49",
     "thickness": "",
@@ -8859,7 +8859,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1c8KyP9ijq9OG2YZjEvQpYETvXvBXmjuX&sz=w4000"
     ],
-    "batch": "#P3",
+    "batch": "",
     "dimensions": "126\" × 56\"",
     "area": "49",
     "thickness": "",
@@ -8888,7 +8888,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1JsdiPgEYadEDwGrXEF63xxg8Kjq_Ylpl&sz=w4000"
     ],
-    "batch": "#P6",
+    "batch": "",
     "dimensions": "126\" × 56\"",
     "area": "49",
     "thickness": "",
@@ -8946,7 +8946,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=19s-bXeyIa6cRAdZwTXzT7CethD0HSxw2&sz=w4000"
     ],
-    "batch": "#P6",
+    "batch": "",
     "dimensions": "126\" × 56\"",
     "area": "49",
     "thickness": "",
@@ -8994,14 +8994,14 @@
     "brand": "Granite",
     "newArrival": "",
     "comingSoon": "",
-    "discount": "25%",
+    "discount": "35%",
     "msrp": "$2,200.00",
     "promoPrice": "$1,650.00",
     "inventory": "1"
   },
   {
     "id": "CLOUDBURST CONCRETE",
-    "title": "CLOUDBURST CONCRETE",
+    "title": "Cloudburst Concrete",
     "material": "Promotional Material",
     "categoryName": "Back to Promotional",
     "image": "https://lh3.googleusercontent.com/d/1REaw4ajSmrrqriSK9-NvopPG68nKxNOC=w1200",
@@ -9032,7 +9032,7 @@
   },
   {
     "id": "RAW CONCRETE",
-    "title": "RAW CONCRETE",
+    "title": "Raw Concrete",
     "material": "Promotional Material",
     "categoryName": "Back to Promotional",
     "image": "https://lh3.googleusercontent.com/d/118D7Of6PfobbMFMY5UN8x5uljHYkXRaO=w1200",
@@ -9063,7 +9063,7 @@
   },
   {
     "id": "CALACATTA LAVASA",
-    "title": "CALACATTA LAVASA",
+    "title": "Calacatta Lavasa",
     "material": "Promotional Material",
     "categoryName": "Back to Promotional",
     "image": "https://lh3.googleusercontent.com/d/17_j-E6GszpJy_vlBDsR_XJpWXPugvuwV=w1200",
@@ -9103,7 +9103,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/DGJ/tablahd/DGJ-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#G15",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9132,7 +9132,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/GEJ/tablahd/GEJ-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F8",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9161,7 +9161,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/LSJ/tablahd/LSJ-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#P7",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9190,7 +9190,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/SL8/tablahd/SL8-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F14",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9219,7 +9219,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/ETS/tablahd/ETS-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F6",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9248,7 +9248,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/ETS/tablahd/ETS-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F6",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9277,7 +9277,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/CHD/tablahd/CHD-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F11 / G29",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9306,7 +9306,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/GVX/tablahd/GVX-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#G4",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9335,7 +9335,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/52C/tablahd/52C-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F9 / F13 / G18",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9364,7 +9364,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/52C/tablahd/52C-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F8 / G9",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9393,7 +9393,7 @@
     "fallbackImages": [
       "https://www.cosentino.com/usa/wp-content/uploads/2020/10/Eternal-Marfil-Tabla-3D.png"
     ],
-    "batch": "#F17 / F25",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9422,7 +9422,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/ETM/tablahd/ETM-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#G23",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9451,7 +9451,7 @@
     "fallbackImages": [
       "https://www.cosentino.com/usa/wp-content/uploads/2020/10/Eternal-Noir-Tabla-3D-1.png"
     ],
-    "batch": "#G16",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9480,7 +9480,7 @@
     "fallbackImages": [
       "https://www.cosentino.com/usa/wp-content/uploads/2020/10/Eternal-Noir-Tabla-3D-1.png"
     ],
-    "batch": "#G23",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9509,7 +9509,7 @@
     "fallbackImages": [
       "https://www.cosentino.com/usa/wp-content/uploads/2020/10/Serena-Tabla-3D.png"
     ],
-    "batch": "#G17",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9538,7 +9538,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/NMB/tablahd/NMB-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#G6",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9567,7 +9567,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/MR1/tablahd/MR1-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#G8 / P2",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9596,7 +9596,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/MR1/tablahd/MR1-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F18",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9625,7 +9625,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/MR4/tablahd/MR4-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F3 / G16",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9654,7 +9654,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/OM5/tablahd/OM5-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F20 / P5",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9683,7 +9683,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/JAP/tablahd/JAP-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F3",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9712,7 +9712,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/OM2/tablahd/OM2-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F29",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9741,7 +9741,7 @@
     "fallbackImages": [
       "https://assetstools.cosentino.com/api/v1/bynder/color/BZJ/tablahd/BZJ-fullslab.jpg?auto=format&h=2200&q=75&w=2200"
     ],
-    "batch": "#F12",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9770,7 +9770,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1gVputzNnEnfdqMDUzwC_x-NrIuY06FAL&sz=w4000"
     ],
-    "batch": "#P2",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9799,7 +9799,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1p54-P8qWduUyOxMGeOq-FJQX2t6x3Pna&sz=w4000"
     ],
-    "batch": "#P4",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9828,7 +9828,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1drR54pEKw4LXM_GU_Bleqg1c_tQHpf_y&sz=w4000"
     ],
-    "batch": "#P5",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9857,7 +9857,7 @@
     "fallbackImages": [
       "https://drive.google.com/thumbnail?id=1-NjItn6EvzkqLhsJkf-wss-MuBinNxg_&sz=w4000"
     ],
-    "batch": "#P3",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9886,7 +9886,7 @@
     "fallbackImages": [
       "https://cdn.shopify.com/s/files/1/0035/3684/6957/files/annicca-quartz-slab.jpg?v=1760717402"
     ],
-    "batch": "#G19",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9915,7 +9915,7 @@
     "fallbackImages": [
       "https://cdn.shopify.com/s/files/1/0035/3684/6957/files/Brittanicca_1440x1440_RGB.jpg?v=1760729626"
     ],
-    "batch": "#F14 / G7",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9944,7 +9944,7 @@
     "fallbackImages": [
       "https://cdn.shopify.com/s/files/1/0035/3684/6957/products/Brittanicca_Gold_warm4000x1900V1_4d7d8c0d-7043-4856-bfae-57b450e601fe.jpg?v=1760996500"
     ],
-    "batch": "#G19 / G29",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -9973,7 +9973,7 @@
     "fallbackImages": [
       "https://cambriausa.scene7.com/is/image/cambriacompanyllc/buckingham-quartz-3100x2140-swatch?wid=1200"
     ],
-    "batch": "#G19",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -10002,7 +10002,7 @@
     "fallbackImages": [
       "https://cambriausa.scene7.com/is/image/cambriacompanyllc/clairidge-quartz-3100x2140-swatch?wid=1200"
     ],
-    "batch": "#G19",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -10031,7 +10031,7 @@
     "fallbackImages": [
       "https://cambriausa.scene7.com/is/image/cambriacompanyllc/clare-quartz-3100x2140-swatch?wid=1200"
     ],
-    "batch": "#G19",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -10060,7 +10060,7 @@
     "fallbackImages": [
       "https://cambriausa.scene7.com/is/image/cambriacompanyllc/clare-quartz-3100x2140-swatch?wid=1200"
     ],
-    "batch": "#P9",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -10089,7 +10089,7 @@
     "fallbackImages": [
       "https://cdn.shopify.com/s/files/1/0035/3684/6957/products/Delgatie_4000x1900V3_b584d4e2-6b01-470b-8bab-a99d78ce2c7c.jpg?v=1760730136"
     ],
-    "batch": "#P6",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -10118,7 +10118,7 @@
     "fallbackImages": [
       "https://cdn.shopify.com/s/files/1/0035/3684/6957/products/Dunmore4000x1900_RGB_15bb4636-fe95-4273-8550-7f00794c4d10.jpg?v=1760729714"
     ],
-    "batch": "#P6",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -10147,7 +10147,7 @@
     "fallbackImages": [
       "https://cdn.shopify.com/s/files/1/0035/3684/6957/products/Ella4000x1900_D_17V1_77622a8d-7d64-4075-abc6-fbd81cf02db8.jpg?v=1760729692"
     ],
-    "batch": "#P6",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -10176,7 +10176,7 @@
     "fallbackImages": [
       "https://cdn.shopify.com/s/files/1/0035/3684/6957/products/Harlow_Slab_4000x1900_RGB_22.webp?v=1760729240"
     ],
-    "batch": "#P6",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -10205,7 +10205,7 @@
     "fallbackImages": [
       "https://cdn.shopify.com/s/files/1/0035/3684/6957/products/Hemsworth_Slab_4000x1900_RGB_21.jpg?v=1760729112"
     ],
-    "batch": "#G30",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -10234,7 +10234,7 @@
     "fallbackImages": [
       "https://cdn.shopify.com/s/files/1/0035/3684/6957/products/InvernessGold_4000x1900_CMYK_21.jpg?v=1760726983"
     ],
-    "batch": "#G19",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
@@ -10263,7 +10263,7 @@
     "fallbackImages": [
       "https://cambriausa.scene7.com/is/image/cambriacompanyllc/kirkstead-quartz-3100x2140-swatch?wid=1200"
     ],
-    "batch": "#G19",
+    "batch": "",
     "dimensions": "",
     "area": "",
     "thickness": "2cm",
